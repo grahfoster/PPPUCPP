@@ -18,9 +18,6 @@ int main() {
 			cerr << e.what() << '\n';
 		}
 	}
-
-	if (!cin)
-		cerr << "Invalid input.\n";
 }
 
 // calculate the roots of a quadratic equation
