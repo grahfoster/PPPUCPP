@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{799DF36C-86A8-4C56-8D50-F7F4BE6C747B}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release/fltk_jpeg\</OutDir>
+    <IntDir>.\Release/fltk_jpeg\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug/fltk_jpeg\</OutDir>
+    <IntDir>.\Debug/fltk_jpeg\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;../..;../../zlib;../../png;../../jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release/fltk_jpeg\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release/fltk_jpeg\fltk_jpeg.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release/fltk_jpeg\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/fltk_jpeg\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/fltk_jpeg\fltk_jpeg.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>..\..\lib\fltk_jpeg.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.;../..;../../zlib;../../png;../../jpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WIN32_LEAN_AND_MEAN;VC_EXTRA_LEAN;WIN32_EXTRA_LEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug/fltk_jpeg\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug/fltk_jpeg\fltk_jpeg.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug/fltk_jpeg\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/fltk_jpeg\</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/fltk_jpeg\fltk_jpeg.bsc</OutputFile>
+    </Bscmake>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>..\..\lib\fltk_jpegd.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\jpeg\jaricom.c" />
+    <ClCompile Include="..\..\jpeg\jcapimin.c" />
+    <ClCompile Include="..\..\jpeg\jcapistd.c" />
+    <ClCompile Include="..\..\jpeg\jcarith.c" />
+    <ClCompile Include="..\..\jpeg\jccoefct.c" />
+    <ClCompile Include="..\..\jpeg\jccolor.c" />
+    <ClCompile Include="..\..\jpeg\jcdctmgr.c" />
+    <ClCompile Include="..\..\jpeg\jchuff.c" />
+    <ClCompile Include="..\..\jpeg\jcinit.c" />
+    <ClCompile Include="..\..\jpeg\jcmainct.c" />
+    <ClCompile Include="..\..\jpeg\jcmarker.c" />
+    <ClCompile Include="..\..\jpeg\jcmaster.c" />
+    <ClCompile Include="..\..\jpeg\jcomapi.c" />
+    <ClCompile Include="..\..\jpeg\jcparam.c" />
+    <ClCompile Include="..\..\jpeg\jcprepct.c" />
+    <ClCompile Include="..\..\jpeg\jcsample.c" />
+    <ClCompile Include="..\..\jpeg\jctrans.c" />
+    <ClCompile Include="..\..\jpeg\jdapimin.c" />
+    <ClCompile Include="..\..\jpeg\jdapistd.c" />
+    <ClCompile Include="..\..\jpeg\jdarith.c" />
+    <ClCompile Include="..\..\jpeg\jdatadst.c" />
+    <ClCompile Include="..\..\jpeg\jdatasrc.c" />
+    <ClCompile Include="..\..\jpeg\jdcoefct.c" />
+    <ClCompile Include="..\..\jpeg\jdcolor.c" />
+    <ClCompile Include="..\..\jpeg\jddctmgr.c" />
+    <ClCompile Include="..\..\jpeg\jdhuff.c" />
+    <ClCompile Include="..\..\jpeg\jdinput.c" />
+    <ClCompile Include="..\..\jpeg\jdmainct.c" />
+    <ClCompile Include="..\..\jpeg\jdmarker.c" />
+    <ClCompile Include="..\..\jpeg\jdmaster.c" />
+    <ClCompile Include="..\..\jpeg\jdmerge.c" />
+    <ClCompile Include="..\..\jpeg\jdpostct.c" />
+    <ClCompile Include="..\..\jpeg\jdsample.c" />
+    <ClCompile Include="..\..\jpeg\jdtrans.c" />
+    <ClCompile Include="..\..\jpeg\jerror.c" />
+    <ClCompile Include="..\..\jpeg\jfdctflt.c" />
+    <ClCompile Include="..\..\jpeg\jfdctfst.c" />
+    <ClCompile Include="..\..\jpeg\jfdctint.c" />
+    <ClCompile Include="..\..\jpeg\jidctflt.c" />
+    <ClCompile Include="..\..\jpeg\jidctfst.c" />
+    <ClCompile Include="..\..\jpeg\jidctint.c" />
+    <ClCompile Include="..\..\jpeg\jmemmgr.c" />
+    <ClCompile Include="..\..\jpeg\jmemnobs.c" />
+    <ClCompile Include="..\..\jpeg\jquant1.c" />
+    <ClCompile Include="..\..\jpeg\jquant2.c" />
+    <ClCompile Include="..\..\jpeg\jutils.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
