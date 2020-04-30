@@ -1,0 +1,10 @@
+Shampoo|10101|2.99
+Chips|12401|4.49
+Toothpaste|29309|2.29
+Vinegar|21109|2.89
+Avocado|90923|1.99
+Tomato|90231|1.49
+Tortillas|82334|2.49
+Lettuce|90384|1.49
+Lime|90110|.99
+Beans|70923|1.99
