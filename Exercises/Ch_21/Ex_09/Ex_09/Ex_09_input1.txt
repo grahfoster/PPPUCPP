@@ -1,0 +1,10 @@
+Customer #1|Address #1|Data #1|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #2|Address #2|Data #2|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #3|Address #3|Data #3|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #4|Address #4|Data #4|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #5|Address #5|Data #5|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #6|Address #6|Data #6|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #7|Address #7|Data #7|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #8|Address #8|Data #8|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #9|Address #9|Data #9|{Item #1|2.99|2}{Item #2|1.99|1}|
+Customer #10|Address #10|Data #10|{Item #1|2.99|2}{Item #2|1.99|1}|
