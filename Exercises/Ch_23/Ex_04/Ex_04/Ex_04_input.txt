@@ -1,0 +1,2124 @@
+Delivered-To: grahfoster@gmail.com
+Received: by 2002:a17:90a:ac05:0:0:0:0 with SMTP id o5csp28090pjq;
+        Tue, 19 May 2020 17:21:43 -0700 (PDT)
+X-Received: by 2002:a05:620a:227:: with SMTP id u7mr2131783qkm.182.1589934102926;
+        Tue, 19 May 2020 17:21:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589934102; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=ASsk7iyCXRtJmhVVILj8Ic0sjzRK/7MnuSSipw3gPZjnSVnv745XcjpvbTsC+A70NK
+         n1ZIcL1B7Vfy4ZBz34d3RXSDBrwaXtFSLBKdde6fDvdQKMVtm1ekqND8fpQqAVaEeA+Y
+         KR0skmXMnHmo6P8Tjh5whdgEVKUGRe3n0fZ6/s5ucrWOb1pvkr4I+d7RErWV69Vz2kIN
+         LM7QggDKyOXBoO/06SZzFFY09OZHke76Gzkqs51AHiqdAwOJerppZazpu5o1WC8g+UMQ
+         BX5yo7w8MBk+TltqVWxYDARMNFXVd3xP69XS+nqJz28sHrEyG6Fup9vYYTCCL7e2yX9t
+         ZaMQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature:delivered-to;
+        bh=VZhDhzUPh/I2sYp1k5n6PmnIvxtNzma15LeEwkscgow=;
+        b=d5ANDvv/YuxuMQqS7RMtGQqbh1MeDRGmwyG/ihemP8QojOnO47QD5Yt4W6gC73Is7C
+         RXRAg5i93j+/8teN5qV7yfKqQ0tVX93ZAkhxisT+gFT3ldxl2NFqHGFTzvQyHtzpP7Hl
+         gnFEJKdu+p/rQD2k8bEg9nBri9oJspStXUMsQf7duI/jOtaWb9/N6ZvaPH7oWG2XSrKw
+         tZgb4tWsSQEff93Z+NQvYlWO9wNYJicIO76QLLzENXycNoBP/GxcjKiKrjZ5lMTRHVf3
+         UMQlwKswCwNmxMu+TRDBaGj/Ay2u3EV/SLiAvkFP/Cc5Qj0JCecY6tk+AQTFykW5sGe1
+         6qSg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@twitch.tv header.s=s1 header.b=kr30iR4Y;
+       arc=pass (i=1 spf=pass spfdomain=recurly.twitch.tv dkim=pass dkdomain=twitch.tv dmarc=pass fromdomain=twitch.tv);
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of gfoster2+caf_=grahfoster=gmail.com@u.rochester.edu) smtp.mailfrom="gfoster2+caf_=grahfoster=gmail.com@u.rochester.edu";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=twitch.tv
+Return-Path: <gfoster2+caf_=grahfoster=gmail.com@u.rochester.edu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f27sor1898749qta.24.2020.05.19.17.21.42
+        for <grahfoster@gmail.com>
+        (Google Transport Security);
+        Tue, 19 May 2020 17:21:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of gfoster2+caf_=grahfoster=gmail.com@u.rochester.edu) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@twitch.tv header.s=s1 header.b=kr30iR4Y;
+       arc=pass (i=1 spf=pass spfdomain=recurly.twitch.tv dkim=pass dkdomain=twitch.tv dmarc=pass fromdomain=twitch.tv);
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of gfoster2+caf_=grahfoster=gmail.com@u.rochester.edu) smtp.mailfrom="gfoster2+caf_=grahfoster=gmail.com@u.rochester.edu";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=twitch.tv
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:date:from:to
+         :message-id:subject:mime-version:content-transfer-encoding;
+        bh=VZhDhzUPh/I2sYp1k5n6PmnIvxtNzma15LeEwkscgow=;
+        b=B5iSbb59gkZQh80oxPw2X4FTHBgJMxFAQvskHCsnEK26/xI+2odg83ajAm/RYaRtiV
+         9yipjmCUmRFhzZK6U4/vZQxO9f+Ae6fzRTr9EAKhgsTZioQ/uHTIOprAInlD60lOkzm4
+         940xTISmq0lcekrdkGjjDgmC/s0jB3Rx0164f3k/6QE3vENNp627/YLe4p1u+wkIOwB8
+         dRMeY3CDeBgD56X9dJh9dPQCNxg6WM6+CbWBstuQAaDILgGvtyX2Rovdo5Q8bne2M/5s
+         3euq2k4P2KGGsTZljyMrWdhBWlXPNH1mv7P/FpjoKxGU4jTeiQDW568IhSwO7ZGsrcwn
+         nAtw==
+X-Gm-Message-State: AOAM530pF1oCorMWy6vlkY25YZVwAeXRVD+JvE/pwnjEk/WCO4gmVMn8
+	XmPqDOvWuOP5sASepLWg5JEPDEFrcfvP8OkjeZebDX3VqfnsFVIwTQ==
+X-Received: by 2002:ac8:1e16:: with SMTP id n22mr2794184qtl.78.1589934102254;
+        Tue, 19 May 2020 17:21:42 -0700 (PDT)
+X-Forwarded-To: grahfoster@gmail.com
+X-Forwarded-For: gfoster2@u.rochester.edu grahfoster@gmail.com
+Delivered-To: gfoster2@u.rochester.edu
+Received: by 2002:ac8:1a4b:0:0:0:0:0 with SMTP id q11csp109147qtk;
+        Tue, 19 May 2020 17:21:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCIvnguetay8fIA5EvaLbOtfEHXibrvL4PDcet6IlIemONB4R0ry6Z/pykQ+yQIoPn18QF
+X-Received: by 2002:aa7:cf08:: with SMTP id a8mr1153358edy.354.1589934099959;
+        Tue, 19 May 2020 17:21:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589934099; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zEySE3VHTF9PbGhZ8gbwUot/aFbpDXsV+ybCf/5CTWsfkaaDkZr2pKHjkqYQ6aCVWH
+         je0hAXrfFSGkGSxKZs14jzGlDBDxyMFdyS9i8Io5mX7aUQ+WBo3ooN7Wn9UTGu2pJMhS
+         ba5mqPk4CUfoXA6W6yJbO5HyaIuZL17SKXlgXrUv19kEntEteFZwPCbHR1OLQ+UXsFdz
+         rlQxwp13NObRGETUNLeKjPN9P9/eG2Q0M3twnzq06Yi2xBKVGkk/GJhg0Hb8Arf5nQr1
+         9E1wrlFr4P7Wf4CAt5OIp8VCODnM/FXmIB7ix9Ddarqkxskd8WwMSUxb2MtXx52Lrs4j
+         Rmfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=VZhDhzUPh/I2sYp1k5n6PmnIvxtNzma15LeEwkscgow=;
+        b=ZSmvY6aceZdsPemkzXm7kgs57QDVRmGB2jjDzl+w1Wnx1/4P/V7s0QTm8MoP3vSoO3
+         4yXBSPvVCd9JkXigFQpHX6IpVjx50ogOwSh2LkuQ8FRuQ+YQUgvz/Qz+u2whEXAeUtAz
+         OVReX3ddX8QD3MH9atu7JZN1PmW3VRFIRh8xnLkpLZrep3XKKVMW4LhsjMWrSWfvbMuM
+         otjS1DWOgxzMIPIKkx8q+7cfX5GOu6DDV+YQceG0Y1DOQaQZjQyvDXiIb4yB2Mu7hXcy
+         QibKgei2lPQDw4H960vBXoaZhhpttmXoGCKV0rmZ44nMdX4ApOfywxYh5p5Ou2MvCBpQ
+         d4Dg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@twitch.tv header.s=s1 header.b=kr30iR4Y;
+       spf=pass (google.com: domain of bounces+5594441-8f39-gfoster2=u.rochester.edu@recurly.twitch.tv designates 167.89.64.215 as permitted sender) smtp.mailfrom="bounces+5594441-8f39-gfoster2=u.rochester.edu@recurly.twitch.tv";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=twitch.tv
+Return-Path: <bounces+5594441-8f39-gfoster2=u.rochester.edu@recurly.twitch.tv>
+Received: from o10.recurly.twitch.tv (o10.recurly.twitch.tv. [167.89.64.215])
+        by mx.google.com with ESMTPS id de11si557790edb.246.2020.05.19.17.21.39
+        for <gfoster2@u.rochester.edu>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 May 2020 17:21:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+5594441-8f39-gfoster2=u.rochester.edu@recurly.twitch.tv designates 167.89.64.215 as permitted sender) client-ip=167.89.64.215;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=twitch.tv; 
+	h=from:to:subject:mime-version:content-type:content-transfer-encoding; 
+	s=s1; bh=VZhDhzUPh/I2sYp1k5n6PmnIvxtNzma15LeEwkscgow=; b=kr30iR4
+	YM/PovA8WImqT5R/uslOPAylZH8xaTGnmIOH4BUbeM2o6vs/7AT+WxAetpzzAeFc
+	WnV8/nRxIS+Fac9DmdwzVS4IAmaPZdKmhxZTUDKhCA7k4dwlBF8Tti+F4UHw/MNP
+	dDjzaYBeqmS1k8JoOdfFMMJtLJB4F/SrD+MU=
+Received: by filter1526p1las1.sendgrid.net with SMTP id filter1526p1las1-30418-5EC47811-12
+        2020-05-20 00:21:38.07303911 +0000 UTC m=+105008.992135404
+Received: from emaily-consumer-7bb6674db8-8zk8g.production1.recurly.net (unknown)
+	by geopod-ismtpd-4-3 (SG) with ESMTP id g0H7rD3mRbOuEozFClBilw
+	for <gfoster2@u.rochester.edu>; Wed, 20 May 2020 00:21:37.939 +0000 (UTC)
+Date: Wed, 20 May 2020 00:21:38 +0000 (UTC)
+From: purchase-noreply@twitch.tv
+To: gfoster2@u.rochester.edu
+Message-ID: <5ec478115180e_e3fd4565afc3413670012f@emaily-consumer-7bb6674db8-8zk8g.mail>
+Subject: Invoice Receipt
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="--==_mimepart_5ec4781150efb_e3fd4565afc341367000c9";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-SG-EID: 50mkvK4PKPxy7dv9XMYm2bSmlKwbcbNw9W/XqJ1t/R0ZGz5GKLmI3eHdRcAo0qJvwAME83y7PyZEhB
+ 97tSDEYPFaGW8JJR/rtCAyjEKox3MkNWSHSaOAauVWsBzQfy+Sy4tv5msZ6wfBE0YZm/YEqUWaT0xZ
+ xFXab7Ym1DjoXsWmcuPbd2+fKhMZXCr5K0/q8i9pjnbqv2a+BfBk/ZzxCg==
+X-SG-ID: mcTyqcYTtmn56LU3ATD1f8wCqCG5n2ci0jpczzgJet7sXzB68GFJseXjpAAlvmD0KjI6ARJUk+9AHo
+ o83k00U/faqkiOEXcZXD/8t4Mkw2P/qmomhQy/KrkXudoSR9u0
+
+----==_mimepart_5ec4781150efb_e3fd4565afc341367000c9
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5ec4781150c32_e3fd4565afc341366999fe";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+----==_mimepart_5ec4781150c32_e3fd4565afc341366999fe
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+This email confirms your recent payment. Here are the=0D
+details of your payment:=0D
+=0D
+Invoice 93622471=0D
+May 20, 2020=0D
+=0D
+$4.99 --  Tier 1 - Monthly Subscription=0D
+      May 20 =E2=80=93 Jun 20, 2020=0D
+=0D
+=0D
+Subtotal:  $4.99=0D
+Paid:      $4.99=0D
+Total Due: $0.00=0D
+=0D
+Billed To:=0D
+Gregory Foster=0D
+160 Rockingham St.=0D
+Rochester, NY  14620=0D
+United States=0D
+=0D
+=0D
+Please keep this email for your records.  If you have any=0D
+questions, please contact us through https://help.twitch.tv/s/contactsuppor=
+t.=0D
+Thanks for your purchase.=
+
+----==_mimepart_5ec4781150c32_e3fd4565afc341366999fe
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head>=0D
+        <meta>=0D
+        <title>Twitch</title>=0D
+        <style type=3D"text/css">=0D
+            h1, h2, td, p {=0D
+                font-family: helvetica, arial, sans-serif;=0D
+            }=0D
+        </style>=0D
+    </head>=0D
+    <body style=3D"background: #f1f1f1;padding: 20px;">=0D
+        =0D
+        <table style=3D"width: 640px; background: #fff;">=0D
+        <tbody><tr>=0D
+        <td>=0D
+            <table width=3D"100%" cellspacing=3D"0">=0D
+                <tbody><tr>=0D
+                    <td valign=3D"top" align=3D"center">=0D
+                        =0D
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" id=3D"headerTable">=0D
+                            <tbody><tr>=0D
+                                <td style=3D"padding: 50px;">=0D
+                                       <img style=3D"width: 147px;" src=3D"=
+https://static-cdn.jtvnw.net/growth-assets/email_twitch_logo_uv">=0D
+                                    <span style=3D"background: #f1f1f1;heig=
+ht: 4px;display: block;margin-top: 50px;"></span>=0D
+                                </td>=0D
+                            </tr>=0D
+                        </tbody></table>=0D
+                        =0D
+                    </td>=0D
+                </tr>=0D
+            </tbody></table>=0D
+            =0D
+=0D
+=0D
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D"padding:=
+ 0 50px 50px">=0D
+    <tbody><tr>=0D
+        <td valign=3D"top" align=3D"center">=0D
+            <table width=3D"100%" cellpadding=3D"0" border=3D"0" cellspacin=
+g=3D"0">=0D
+                <tbody><tr>=0D
+                    <td>=0D
+                        <h1 style=3D"font-size:22px; color: #9147ff; margin=
+: 0;">=0D
+                            Invoice Receipt=0D
+                        </h1>=0D
+                        <h2 style=3D"font-size:12px;margin: 0;color: #2e2d3=
+0;font-weight: normal;">=0D
+                            Invoice #93622471=0D
+                        </h2>=0D
+                        <br>=0D
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"margin-bottom: 10px">=0D
+                            <tbody><tr>=0D
+                                <td id=3D"message-body" align=3D"left" vali=
+gn=3D"top" style=3D"font-size:14px;">=0D
+                                    <p>=0D
+                                        This email confirms your recent pay=
+ment of $4.99 on May 20, 2020.=0D
+                                    </p>=0D
+                                    <p>=0D
+                                        If you have any questions or proble=
+ms, please don=E2=80=99t hesitate to contact us through <a href=3D"https://=
+help.twitch.tv/s/contactsupport" style=3D"color: #9147ff; text-decoration: =
+none;">help.twitch.tv</a>.=0D
+                                    </p>=0D
+                                </td>=0D
+                            </tr>=0D
+                        </tbody></table>=0D
+                        <br>=0D
+                        =0D
+                        <table id=3D"invoice-table" width=3D"100%" cellpadd=
+ing=3D"4" cellspacing=3D"0">=0D
+                            =0D
+                            <thead>=0D
+                                <tr style=3D"background:#e8e6e6;text-transf=
+orm: uppercase; color: #4d4d4d;">=0D
+                                    <th align=3D"left" style=3D"font-size:1=
+2px">=0D
+                                        <strong>Date</strong>=0D
+                                    </th>=0D
+                                    <th align=3D"left" style=3D"font-size:1=
+2px">=0D
+                                        <strong>Description</strong>=0D
+                                    </th>=0D
+                                    <th align=3D"right" width=3D"20" style=
+=3D"font-size:12px">=0D
+                                        <strong>Amount Paid</strong>=0D
+                                    </th>=0D
+                                </tr>=0D
+                            </thead>=0D
+                            =0D
+                            <tbody>=0D
+                                <tr>=0D
+                                    <td align=3D"left" valign=3D"top" style=
+=3D"border-bottom: 1px solid #f3f3f3;font-size:12px;">=0D
+                                        May 20 =E2=80=93 Jun 20, 2020=0D
+                                    </td>=0D
+                                    <td align=3D"left" valign=3D"top" style=
+=3D"border-bottom: 1px solid #f3f3f3;font-size:12px;">=0D
+                                        Torje Tier 1 - Monthly Subscription=
+=0D
+                                    </td>=0D
+                                    <td align=3D"right" valign=3D"top" widt=
+h=3D"20" style=3D"border-bottom: 1px solid #f3f3f3;font-size:12px;">=0D
+                                        <strong>$4.99</strong>=0D
+                                    </td>=0D
+                                </tr>=0D
+                            </tbody>=0D
+                        </table>=0D
+                    </td>=0D
+                </tr>=0D
+            </tbody></table>=0D
+        </td>=0D
+    </tr>=0D
+</tbody></table>=0D
+=0D
+</td>=0D
+</tr>=0D
+</tbody></table>=0D
+=0D
+<table style=3D"width: 640px;border-top: 1px solid #e5e5e5">=0D
+  <tbody><tr>=0D
+      <td style=3D"color: #cbcbcb; font-size: 12px;padding-top: 10px;">=0D
+ <img src=3D"https://static-cdn.jtvnw.net/revenue-moneypenny-images/email/e=
+mail_twitch_glitch.png" style=3D"text-align: center;margin-right:12px;">=0D
+          <a style=3D"color: #9147ff; text-decoration: none; margin-right: =
+10px" href=3D"http://www.twitch.tv/subscriptions">Manage Subscriptions</a> =
+| <a style=3D"color: #9147ff; text-decoration: none;margin-left: 10px; marg=
+in-right: 10px;" href=3D"http://twitch.tv/payments">Update Billing Informat=
+ion</a>=0D
+      </td>=0D
+  </tr>=0D
+</tbody></table>=0D
+=0D
+=0D
+
+<img src=3D"https://u5594441.ct.sendgrid.net/wf/open?upn=3DYuHyfPRF9oTwPHHr=
+1EjM7TbqJReKIFuX9b4E-2FqWqgaqgI6Y56bF7tcpzDItyBu-2FH2bbFXRL32ZhyT1Lt5cAUFKL=
+bCq69Iix5tg7PwncbBhcCNCsSz9UFj9YG-2FYP5lMDhYtLUwXhlVcIRjPNafFKbXOp0XDua-2Fi=
+tZk2-2FL0IhHa-2BJaytomgcr0p7qon0zvoDVLkPKlxsoojtcd-2FvokmOtH-2Bk9BuHRQN3Rca=
+vBD-2FC1oLE489Hp6lm-2BO1eWTmTveaRx2PhYMue3SCFVnKJZH4eqqk0m71qs66yJWRf7iAx8-=
+2FItAhHQW5Glot2E2r60ydP75ExtwGyJvZE4NHEJJayzeKOJDY-2F29fiZfMe3UgkqS3Y70-3D"=
+ alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !import=
+ant;width:1px !important;border-width:0 !important;margin-top:0 !important;=
+margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !importa=
+nt;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !im=
+portant;padding-left:0 !important;"/>
+</body></html>
+
+----==_mimepart_5ec4781150c32_e3fd4565afc341366999fe--
+
+----==_mimepart_5ec4781150efb_e3fd4565afc341367000c9
+Content-Type: application/pdf;
+ filename=invoice_93622471.pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename=invoice_93622471.pdf
+Content-ID: <5ec4781152086_e3fd4565afc341367002aa@emaily-consumer-7bb6674db8-8zk8g.mail>
+
+JVBERi0xLjcKJeTjz9IKNCAwIG9iago8PC9MZW5ndGggMyAwIFIvRmlsdGVyL0ZsYXRlRGVjb2Rl
+Pj4Kc3RyZWFtCnictVhNUxtHEB0ZsM3iAgksYiC2JzaxUQjrna/9cHJKVZIqVy6xdDM5JSFVKeSq
+cMyvz+uZ/RSzyy6QEuyOpNnXr7tf98xI8AivM4FLkkn++zKIQimymFc3mRh+9VfwTyDsXMF1RH+Y
++sMiePeTwNOaLy6CMxFFfPFvQJMWfwQnbMQesDW2zjbYw9ni7+DHRfBrE8UkDZTIi/KIPWab7Pwz
+22JP2PkVe0jjbcDusDFe637oRPSA3gYiERwT5ARWNv1gqekFtsv2COgpmNFwA9jgu8GmbJ8+/4I9
+o9sBO2RHsHXot5VlPWx9CXhH/HkRjV3nx5UfVQjVA/YFewmcNcbZVwT7CuHZoezhQzgyZq9hdmrj
+/gpzjtnXsFmmmL3B/W2Ledkn0+cniNCILJ/PHIMX8PQbZOYU8ZpACRO8HntMKCiwJklZSBLAv3Tq
+kj1qQXPSjEKjM15e4zSmSmi64bfxLUL1FsFag5Wxc8kbGu0tAj/mASJwamNwyM7YUQtzp/zbM9+y
+AuCFtkK210LcV2J+yHcQ0HFRY/vFYOItN3LB1dvtXRiB/A603FIN2lvQfii4D9lHAKQ8rkH4voZD
+pF3h3p60QLWNuyPu6w13jzjVZ3+5t+oFNkZs2oKf9OmgkilCOYK8Tzu4pvfXIQsQdT2UKs3CWHEZ
+JWGmjAPVYPYGZXgASELxx8vRkoSYijCRFaVtJmrG8UQWw7Ew0ZgdhZoeJiVRtJaBQrZpdOlGOqER
+fVuN7LcXTSVqHeqYi1iHsbZBF5xeRR5lt25oqR3l3pU0syhLeXUTKrFMc37LwMBHx8WOHL+Kc+nH
+RSPmHho6SsBcWeaWztStqH3UHIWpVhTN4mYE//hzIPmHMmpLO5KSuMxLhvVIz0sPnFfl3BKh8nBe
+y1UVgXlpo4mQR9JIUkp5izOKJERNeyyjkBwJFfyZR6ot8vl8pDZRdnTpRvD40n5ZDjwC0SmXcVyI
+o19jspXTQxIFH4SUzDjx0sgSqjhWvJvcRCqGkxu7TdaOa864Thv9s1W+OUOXflkWmmNYsa48WSm0
+xIRmcCwNGB73LC7HTmOtcvbtyHGqeJbcV7JsdGgGBzO2UdzoleuCVy7zsvxz8ZVcK/5NhkYmIfrl
+QIa0Y08Qw6nt59zTyn1tBWnKRNVVGu0Et5QuGZD3bugxHTasdOtGRogk7ULsgobLa9fIqKOtY9/J
+HQPnT6eAS8GlJtRoLZkcEjDfLlEbGcp4KFK5+HkQjcruCbGljeddbVl1tXnX9EKSy5okOx8oWyoG
+KlJ98GlaXfzzPCL0yheeErU+q50BIdpFwEhaBOYrO5+UK9TMvRTLSt4G4nYpwdLUWQPuhj3HFujZ
+k/12B8NhkHREncDn3TaGiRjWF+lU/NxLD4ofCve+tpH87gbt2+UehNEqISORhEop++6y9s6uDnZW
+NYrLjtsCWwdzCs1h7chcM9A0fnEtpjighCrRjRTJ9iBs2kb4FEfxJxCo/dnEdxY3CqjAGYi+gxY+
+wf++/wyh9R2P97FdQl5CZuRF268uOtb/x4FNqHgIdP3Uskr8M/sesZrSWbn4Lm7pFeRPpu8WNml7
+ke8QplsOBNwILFYZPf4Ji+pMRyfswUzgan/Bmf22+NBnBxBZIWG/Zmk8Kw6su3B8ahd+SiJ9suY2
+AR3HR3ov8BRB7NICbz957453tXr+DwU9yIAKZW5kc3RyZWFtCmVuZG9iagozIDAgb2JqCjEyNzAK
+ZW5kb2JqCjEwIDAgb2JqCjw8L0xlbmd0aCA5IDAgUi9GaWx0ZXIvRmxhdGVEZWNvZGU+PgpzdHJl
+YW0KeJwr5DJUMABCQwVTIzM9Y2MzBXMzSz0LYyOF5FwuAz1TE0sFOGlmYaZQlM7lFMKl72aooGuh
+EJLGpWtoYKAQUsUFMiMkhUuDwYxBiMGWQYAhJo9BGkSIMtiA2ZohWVyuIVyBXAD1AhWCCmVuZHN0
+cmVhbQplbmRvYmoKOSAwIG9iagoxMDUKZW5kb2JqCjE0IDAgb2JqCjw8L1RpdGxlIChpbnZvaWNl
+XzkzNjIyNDcxKQovQXV0aG9yIChSZWN1cmx5LCBJbmMuKQovQ3JlYXRvciAoUmVjdXJseSwgSW5j
+LikKL0NyZWF0aW9uRGF0ZSAoRDoyMDIwMDUyMDAwMjEzNVopCi9Qcm9kdWNlciAoUERGbGliK1BE
+SSA5LjEuMnAxIFwoUnVieS9MaW51eC14ODZfNjRcKSkKPj4KZW5kb2JqCjE2IDAgb2JqCjw8L0xl
+bmd0aCAxOCAwIFIvRmlsdGVyL0ZsYXRlRGVjb2RlPj4Kc3RyZWFtCnicXZRNj5swEIbv/AqOu4cV
+YWxgV4qQsmQjceiHmvYHEHCySA0ghxzy72u/77SHIiXSI8+M57EZsqbdt9O4Zt/93B/dmp7HafDu
+Nt9979KTu4xTkks6jP1K4n9/7ZYka750y9fu6rLdMJ/cSzu4aR3Xx8uv5pgO7hwC2v3xcVvdtZ3O
+83ab/Qi5t9U/npDwnH3zg/PjdHkKGc/Z8b4sv901FEk3dc0CYYefj8WlgoK57j4P7rZ0vfPddHHJ
+dhOeensIT524afhvudSs07n/7Dyi8zr8F7YGSISqIpgI5RvBYkXDCqwYQgl4JVQRjK68AgrCG2BD
+2EUQhfcIVggN9tGcPUCrfaBRhQNWmJNv0AFzcvgYXYFPmRPo80GAjy0J9DkQ4CMNAT6Wm+bwsVqN
+PjydHD6Gp5PDx2gYfArtDT6lhsHH6gp8yj1A6MMOhD47Au+H5ybwEc3h/bAdgY/VMPpQW+BTUVvg
+UyjAR2gq9OGdCn00DD5W94GP4esi9OEhCnwsezPwKXglBj6WZ2DgY9mbgU/B0gY+omHwKXiiBj4F
+5Qx8Si0dfCRec8KbiaV5bobvG30MfET3gU9JOcP7qTA5OiJxhuKA/53vtL97H8YSXwHMZJzGcXL/
+PhTLvKQhK/6SP11bCZIKZW5kc3RyZWFtCmVuZG9iagoxOCAwIG9iago0ODcKZW5kb2JqCjE1IDAg
+b2JqCjw8L0xlbmd0aCAyMSAwIFIvRmlsdGVyL0ZsYXRlRGVjb2RlL0xlbmd0aDEgMjAgMCBSPj4K
+c3RyZWFtCniclXppdFzVle4599Y83lujpJJq0JVKQ0kqqUpTybIsa7Kt2ZKMSrYlW7ZlSx6FwSMY
+jMGBiMkrgQAJkLysTtJN85J7SyIQms4yU1ZWQ1Zo8NPCNISXl0c3TkjilyYNJnH57X3uLdnpXvnR
+svcdzp3O2Wfvb397nyKUEGIhpwlPwjsPTM9/dlZ4FlpAeN3Oo7eGDW+b3iFEXwJt63fP7zngXIp/
+D873E8LN7Nl/YneGHt9IiBmulz0yOzO9K/vty6PwrAz3N85Cg6mu6Dk4/xjOS2YP3Hp86e2nfYTo
+bHD++f5DO6f/vupBuNdUDud/PjB9fL7AZnwN3q+D8/D84Zn5ya8e2kmI8QKcj4BQ6KcF9jaCbyDc
+50T9ayN/+RfWBO+VNKnAPmhSD1KuSYt2DWUVSJUm0E9SrQk+X6NJFKRWEzNInSYBkIQmIkhSE6P2
+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
+o5/S0vPThejJS8NTPbFo92Ah37e1Ia2n0vFYce7819/8aWH2Ynl86TG649rZJ184cbq15TTM/T+R
+NIJSCmVuZHN0cmVhbQplbmRvYmoKMjggMCBvYmoKMzQ2OQplbmRvYmoKMzAgMCBvYmoKPDwvTGVu
+Z3RoIDMyIDAgUi9GaWx0ZXIvRmxhdGVEZWNvZGU+PgpzdHJlYW0KeJxdkE1qwzAQhfc6hZbJIih2
+4nZjBMEhoEXaUrcHkKWxK6glMZYXvn31k3bRAQk+Zt57w7BOXIU1gb2hUz0EOhqrERa3ogI6wGQs
+qWqqjQqFyq9m6Qnr7tK/yBnYRbsBDkKDDSZsh8+upxrGOCCu/bYEmIUdXduy96hdAm67LNizV9SA
+xk67qNizfvX+G+ZoQo+cF4OY8LF5oHU2rB7pTsPipQKUdgLSHmPx9haLE7D6X7spomFUXxLzcMXj
+35x5hjrB063AKcFzXeCcO5cCTYYmBzysUlS6w+8ZqFoR4/b5WHn1tLSx8HdP7zyNqvTID8rjeJMK
+ZW5kc3RyZWFtCmVuZG9iagozMiAwIG9iagoyNDUKZW5kb2JqCjI5IDAgb2JqCjw8L0xlbmd0aCAz
+NSAwIFIvRmlsdGVyL0ZsYXRlRGVjb2RlL0xlbmd0aDEgMzQgMCBSPj4Kc3RyZWFtCnicXVZrbBxX
+FT53Zp/eh2d21494/LjjWa+dzHjX2bW9WWI760ecOI6Js7ab3WBoXdu18zA2aYhSpEJAbR2tVIQE
+4qWSPyCIGkB3dg2UCkR+RCKC8odWFhQViV9gRAVxQMIk9nLu7CZpO6tz75xz7zn3PL5zZ4EAQBVc
+AxHo/Mrcmvjr6ddR8kOkhfkrl6lrteplAPI95J96bm1ppXoj9gPkHwIIi0sXX3hu5ivf+C6APYR0
+fHlxbuHBv/+5gesS7u9dRoH96777yB9HPry8cvnq8jvfbkP+IvL1F1fn59ozw/8CsP0X+caVuatr
+Pp/4V1x/CXm6dmlx7ed/6s3j+gLyX0Mi6GcVzl788ScL5ccBH36mK8SjW6yQHel8hWxIqxUSkC5V
+SOQa5LXUX/58Of+/p6v7/iO0iH/jBn97N9X7aH5wae+0I2zrQk1X5QxrFF8qHYIF+3sPLj284QjD
+AtR8yCeHSEv3hHm4IRgwSUagD7ZLbwsaTFgWHPBTcMMX0aKAvAC13KRwE3n0VfAKvxD+CBmU22AE
+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
+Up55DFoxJbnU1jAFW9YKpjSXXntGGIxiWM2VYUOuueBXXIo4jA4Ps15dtXGQ3EZR1iPuVi9wF1+O
+8IPC9XIeknLWv79t4yRKRNYtmpDEP7o3F/3Bx94ihH5RNdmnalxPymqanU9C1ZbtsnOWXdffqhLi
+gBiTk9PQjEM1Kao22miGOHwKbIvLk/PTOI8LtN0ztPrLpg1359WvGnauwrRs2sXyw/Gkvg0H2eVi
+EhaI7MNjZAdwMJ/Pwh2mXBwdJacxtEU5b+sFUrcK9oZ7IRjLboZyaBUSRcQpPl5wI1A/FWv4/JAR
+3FoNueM6V3h3XCliBkVKOlqlNZOj3CgYOc+dyKH30o4DB8ZAjn1eEiOpk+0oU5Bp7JNCmiTUueVW
+m5eBQCEZ8iiqtiw5yeFMIcC1NZv0EYyAcfLJeHxwwBGzQERiWbD/yvOcqaw3K6YNV5Qdx7q2MV/Z
+STE/C+X0d4tz5A8Vb3mHsBR3d7v132FHAlrescojoVbgNEaM0vKX4i68qvB5W8zK8XE1nQUusj5K
+/R13Ixs8+DGk095eOQvg36wwlqQdsbeg/PPsujfoPrnr1rPJDpxJbcaZ9P44b/L+7kiTfY20Qlew
+6EVGE0a9wtqADg90nQMxaEQ4kdUaVEBuI1lRx7JH3OPoc53sgLoRS1ckqeyihixJZ/cmJ7eed3Rk
+JvqWwto1cDblchM8UplnerRYowfBJ3pwrfyb4OldDy4uz55cXt7Oyj/3YQc/SmzmB119b362BPDu
+CCm1oStKmRBQwIQ0jRj6EBLqdhY/37/wq5ah44fPOFxz4Wit8luysF78jqRdvYPyVfXJmufW8bWY
+xr9FjCnVJzvBBswafJnT/Co09f1iHCBYJekiTMoiRh3rbCU+HTmtpSRaxHervo8Ws8/lJLaOh8r/
+A8IKUyEKZW5kc3RyZWFtCmVuZG9iagozNyAwIG9iago3ODgKZW5kb2JqCjM4IDAgb2JqCjw8L0Zp
+bHRlci9GbGF0ZURlY29kZS9UeXBlL1hSZWYvV1sxIDIgMl0vU2l6ZSAzOS9Sb290IDM2IDAgUi9J
+bmZvIDE0IDAgUi9JRFs8RUQ1MDUzMjU5MDNDNTcyNzY2NzIyQTA5RURENjIzMjk+PEVENTA1MzI1
+OTAzQzU3Mjc2NjcyMkEwOUVERDYyMzI5Pl0vRGVjb2RlUGFybXM8PC9Db2x1bW5zIDUvUHJlZGlj
+dG9yIDEyPj4vTGVuZ3RoIDE3NSAgICAgICA+PgpzdHJlYW0KeJw1zD0OAXEQBfD3f/tFKLbAHUSp
+opFsqXIElcpxXEGh2KjoqIQTiGv4CBvWGjPJ7hQvkze/DIFAhETkYkJHKMEIdyI/ABTc4PTa1LSr
+X6aEHl6ETNS4PDWZXG3fxyol7OgfeB9tUOys//ThUepfFHSZX/5R2V0hJ7gx+ZuavCSIKL0x3nTn
+LWqVHCTICDczKWuTpxUalOECT7rjHM1KJikeurdN+ktLtIA/y5szHQplbmRzdHJlYW0KZW5kb2Jq
+CnN0YXJ0eHJlZgoxODA1NQolJUVPRgo=
+
+||||
+
+Delivered-To: grahfoster@gmail.com
+Received: by 2002:a17:90a:ac05:0:0:0:0 with SMTP id o5csp900377pjq;
+        Tue, 19 May 2020 14:53:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwATa4NzFA0GlM6ZO8n9nIbRzw29yTB6SmhjrdEhLaOYpCN7nfJ0PRA72fRrYclu0zM4nJP
+X-Received: by 2002:a37:c08:: with SMTP id 8mr1623151qkm.47.1589925187434;
+        Tue, 19 May 2020 14:53:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589925187; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Q77AosuS8KIwK6Q+BZl1VO4mToPTOn7QI2M9ZcC8+75HqEnpoOCgML1+zcr8+1vRhh
+         0w1KJmDzYQoZeWF91FaWNZZHFPonH+9YE9u//JCl4IudzKxZyY2Q2N1YjEXR28qVeyNH
+         8bPSGKDWqSzQTwIDzRduiVOqxmxz7oSWV70VI7c2JkE6Qudh5RVkMUFSnbFCo0UluiSn
+         dgLQCMPgafA4196U2qf+b6nwi7ysOgnzkkb334STYhtf+Sn2FRCsZW3gIVWf1sGLLpUS
+         j5W6SxT01NXOmL4gweVQ1HOFgh1TSxN3L31cqp3hplCr1HB62SU9tIljTsghtcXECGsc
+         G0kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe-post:list-unsubscribe:mime-version:subject:to
+         :reply-to:from:date:message-id:dkim-signature;
+        bh=7PYgm9eFlqgMGyGRAxKxTzZuYVAaruSFPSNWOp7MpEo=;
+        b=sua8XTlMSdVzTEvl4Zif5nkAIDCpKnOklBMUI/3WdwBODBZCqLWvottwv+ryxgsOJB
+         ByXOWA0uMTXNNOrQeYLiVMZPsuc+HRvdk5ErrPXe6cRxGSuRmnp3sCh4kBJCfzmEXDUT
+         Pq494N6rAwBG5LZz8Gc2pz44JOOy6lDPjJhTwtZsjQq6EKIoB29Z/MmWt+6ZUvi8biC7
+         sV0SLaOPZZeD2+DbNsO6UniZUyUrdfMryIO0/F/R6uzm7NNdGVl5HsfT4HfDlVmljBCp
+         fStBQEDRwuHTQ5wrxMDsy5ZOCQMP2HqpPma8aJkoXW5OV+G5coO23po43gaMlKxV3g45
+         pUtw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@auth.ccsend.com header.s=1000073432 header.b=iV6jh4+k;
+       spf=pass (google.com: domain of aj2rkdgqzsrmc/5i1/7pytg==_1123022148799_lmuy0hq1eeqlg9suunvx6g==@in.constantcontact.com designates 208.75.123.231 as permitted sender) smtp.mailfrom="AJ2rKDgqzSrmc/5i1/7PYtg==_1123022148799_lmuY0Hq1EeqlG9SuUnVX6g==@in.constantcontact.com";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=mountsinai.org
+Return-Path: <AJ2rKDgqzSrmc/5i1/7PYtg==_1123022148799_lmuY0Hq1EeqlG9SuUnVX6g==@in.constantcontact.com>
+Received: from ccm231.constantcontact.com (ccm231.constantcontact.com. [208.75.123.231])
+        by mx.google.com with ESMTPS id y32si475459qtb.371.2020.05.19.14.53.07
+        for <grahfoster@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 May 2020 14:53:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aj2rkdgqzsrmc/5i1/7pytg==_1123022148799_lmuy0hq1eeqlg9suunvx6g==@in.constantcontact.com designates 208.75.123.231 as permitted sender) client-ip=208.75.123.231;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@auth.ccsend.com header.s=1000073432 header.b=iV6jh4+k;
+       spf=pass (google.com: domain of aj2rkdgqzsrmc/5i1/7pytg==_1123022148799_lmuy0hq1eeqlg9suunvx6g==@in.constantcontact.com designates 208.75.123.231 as permitted sender) smtp.mailfrom="AJ2rKDgqzSrmc/5i1/7PYtg==_1123022148799_lmuY0Hq1EeqlG9SuUnVX6g==@in.constantcontact.com";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=mountsinai.org
+Return-Path: <AJ2rKDgqzSrmc/5i1/7PYtg==_1123022148799_lmuY0Hq1EeqlG9SuUnVX6g==@in.constantcontact.com>
+Received: from [10.252.1.139] ([10.252.1.139:36128] helo=p2-jbemailsyndicator11.ctct.net)
+	by 10.249.245.20 (envelope-from <AJ2rKDgqzSrmc/5i1/7PYtg==_1123022148799_lmuY0Hq1EeqlG9SuUnVX6g==@in.constantcontact.com>)
+	(ecelerity 4.3.1.69340 r(Core:4.3.1.0)) with ESMTP
+	id 6A/D6-61995-62554CE5; Tue, 19 May 2020 17:52:39 -0400
+DKIM-Signature: v=1; q=dns/txt; a=rsa-sha256; c=relaxed/relaxed; s=1000073432; d=auth.ccsend.com; h=date:mime-version:subject:X-Feedback-ID:X-250ok-CID:message-id:from:reply-to:list-unsubscribe:list-unsubscribe-post:to; bh=7PYgm9eFlqgMGyGRAxKxTzZuYVAaruSFPSNWOp7MpEo=; b=iV6jh4+k5jz7u41PeDNN/HzaijfSlPxbryQSfNW2UwOe3AjOs37FxCNGUdxj0JKIsaXIWGYzF0FZ0vtv9JRF28rT1nDEnFXt+bYIlFEF38lJqPZ2E4uMTQYl5PrRVuRxWIpRAokOIj4EB7O/pGT0cTNTe0rbxDizSYMuoQWJauI=
+Message-ID: <1134282775863.1123022148799.1445423350.0.351752JL.2002@scheduler.constantcontact.com>
+Date: Tue, 19 May 2020 17:52:38 -0400 (EDT)
+From: Mount Sinai Department of Orthopedic Surgery <orthopedics@mountsinai.org>
+Reply-To: orthopedics@mountsinai.org
+To: grahfoster@gmail.com
+Subject: Free Webinar: Keeping Kids Safe in a COVID World Best Practices
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_279780112_102817173.1589925158992"
+List-Unsubscribe: <https://visitor.constantcontact.com/do?p=un&m=001npbIzmRkfYhT7ISb6Jv8Kg%3D%3D&se=001hTz8gKZ38HUpASZ_bFqbTQ%3D%3D&t=001EkZLEx15CcE%3D&llr=4ffmv7vab>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Campaign-Activity-ID: 276aca0e-0ab3-4ab9-9cff-98b5ffb3d8b6
+X-250ok-CID: 276aca0e-0ab3-4ab9-9cff-98b5ffb3d8b6
+X-Channel-ID: 966b98d0-7ab5-11ea-a51b-d4ae527557ea
+X-Mailer: Roving Constant Contact 2012 (http://www.constantcontact.com)
+X-Return-Path-Hint: AJ2rKDgqzSrmc/5i1/7PYtg==_1123022148799_lmuY0Hq1EeqlG9SuUnVX6g==@in.constantcontact.com
+X-Roving-Campaignid: 1134282775863
+X-Roving-Id: 1123022148799.1445423350
+X-Feedback-ID: 966b98d0-7ab5-11ea-a51b-d4ae527557ea:276aca0e-0ab3-4ab9-9cff-98b5ffb3d8b6:1123022148799:CTCT
+X-CTCT-ID: 95c90eda-7ab5-11ea-a51b-d4ae527557ea
+
+------=_Part_279780112_102817173.1589925158992
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Join Us!  Keeping Kids Safe in a COVID World =EF=BB=BFBest Practices The De=
+partment of Orthopedic Surgery at Mount Sinai is here for you and your fami=
+ly. We are hosting a free webinar on Wednesday, May 20, 2020 at 4:00 PM(EDT=
+) on how to keep your kids safe while at home during the COVID-19 pandemic.=
+ Learn more about engaging kids in exercise, preventing and managing injuri=
+es, when to seek medical treatment and more from our faculty members. This =
+event will be broadcast on YouTube live and will not require a login. You c=
+an tune in by clicking the link below. If you are unable to join, the prese=
+ntation will be available to view anytime on YouTube and our website. Webin=
+ar Link Faculty Presentations Leesa M. Galatz, MD Introduction Abigail K.Al=
+len, MD Tips for Active Kids Alexis C. Colvin, MD Should I Take My Kid to t=
+he Doctor? Focus: Lower Extremity Sheena Ranade, MD Preventing injury after=
+ weeks of shelter at home-role for warmup, strengthening and conditioning B=
+rad Parsons, MD Keeping Your Kids Exercising During the Pandemic Home-Triag=
+ing Your Child's Arm Injury: When to Get it Checked Follow us on Social! =
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C Mount Sinai Department of=
+ Orthopedic Surgery | 5 East 98th St, New York, NY 10029 Unsubscribe grahfo=
+ster@gmail.com About Constant Contact Sent by orthopedics@mountsinai.org in=
+ collaboration with Try email marketing for free today!
+------=_Part_279780112_102817173.1589925158992
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--[if gte mso 9]>
+<style id="ol-styles">
+/* OUTLOOK-SPECIFIC STYLES */
+li {
+text-indent: -1em;
+padding: 0;
+margin: 0;
+line-height: 1.2;
+}
+ul, ol {
+padding: 0;
+margin: 0 0 0 40px;
+}
+p {
+margin: 0;
+padding: 0;
+margin-bottom: 0;
+}
+sup {
+font-size: 85% !important;
+}
+sub {
+font-size: 85% !important;
+}
+</style>
+<![endif]-->
+<style id="template-styles-head" data-premailer="ignore">
+.footer-main-width {
+width: 630px!important;
+max-width: 630px;
+}
+table {
+border-collapse: collapse;
+table-layout: fixed;
+}
+.bgimage {
+table-layout: auto;
+}
+.preheader-container {
+color: transparent;
+display: none;
+font-size: 1px;
+line-height: 1px;
+max-height: 0px;
+max-width: 0px;
+opacity: 0;
+overflow: hidden;
+}
+/* LIST AND p STYLE OVERRIDES */
+.editor-text p {
+margin: 0;
+padding: 0;
+margin-bottom: 0;
+}
+.editor-text ul,
+.editor-text ol {
+padding: 0;
+margin: 0 0 0 40px;
+}
+.editor-text li {
+padding: 0;
+margin: 0;
+line-height: 1.2;
+}
+/* ==================================================
+CLIENT/BROWSER SPECIFIC OVERRIDES
+================================================== */
+/* IE: correctly scale images with w/h attbs */
+img {
+-ms-interpolation-mode: bicubic;
+}
+/* Text Link Style Reset */
+a {
+text-decoration: underline;
+}
+/* iOS: Autolink styles inherited */
+a[x-apple-data-detectors] {
+text-decoration: underline !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+color: inherit !important;
+}
+/* FF/Chrome: Smooth font rendering */
+.editor-text, .MainTextFullWidth {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+/* Gmail/Web viewport fix */
+u + .body .template-body {
+width: 630px;
+}
+@media only screen and (max-width:480px) {
+u + .body .template-body {
+width: 100% !important;
+}
+}
+/* Office365/Outlook.com image reset */
+[office365] button, [office365] .divider-base div, [office365] .spacer-base div, [office365] .editor-image div { display: block !important; }
+</style>
+<style>@media only screen and (max-width:480px) {
+table {
+border-collapse: collapse;
+}
+.main-width {
+width: 100% !important;
+}
+.mobile-hidden {
+display: none !important;
+}
+td.OneColumnMobile {
+display: block !important;
+}
+.OneColumnMobile {
+width: 100% !important;
+}
+td.editor-col .editor-text {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+td.editor-col .editor-image.editor-image-hspace-on td {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+td.editor-col .editor-button-container {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+td.editor-col .editor-social td {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+td.editor-col .block-margin {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+td.editor-col td.block-margin .editor-text {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.editor-col td.block-margin .editor-image.editor-image-hspace-on td {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.editor-col td.block-margin .editor-button-container {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.editor-col td.block-margin .editor-social td {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+.editor-button td > table tr > td {
+padding: 0px 0px 0px 0px !important;
+}
+.editor-button td > table tr > td td {
+padding: 9px 15px 10px 15px !important;
+}
+.layout {
+padding: 15px 9px 15px 9px !important;
+}
+.layout-container-border {
+padding: 1px 1px 1px 1px !important;
+}
+.layout-container {
+padding: 0px 0px 0px 0px !important;
+}
+.editor-image img {
+width: auto !important; margin-left: auto !important; margin-right: auto !important;
+}
+.editor-image .image-cell {
+padding-bottom: 15px !important;
+}
+.editor-text {
+font-size: 16px !important;
+}
+.preheader-text {
+font-size: 12px !important;
+}
+.section-headline-text {
+font-size: 24px !important;
+}
+.headline-text {
+font-size: 24px !important;
+}
+.subheadline-text {
+font-size: 20px !important;
+}
+.feature {
+padding-top: 0px !important; padding-bottom: 0px !important;
+}
+.layout-outer {
+padding: 0px 20px !important;
+}
+.feature-heading-text {
+font-size: 20px !important;
+}
+.feature-text {
+font-size: 16px !important;
+}
+.split.editor-col {
+margin-top: 0px !important;
+}
+.split.editor-col ~ .split.editor-col {
+margin-top: 10px !important;
+}
+.split-layout-margin {
+padding: 0px 20px !important;
+}
+.article {
+padding-top: 0px !important; padding-bottom: 0px !important;
+}
+.article-heading-text {
+font-size: 20px !important;
+}
+.article-text {
+font-size: 16px !important;
+}
+.social-container {
+text-align: center !important;
+}
+.social-text {
+font-size: 14px !important;
+}
+.cpn-heading-text {
+font-size: 28px !important;
+}
+.editor-cpn-heading-text {
+font-size: 28px !important;
+}
+td.col-divided .editor-col {
+border-right: 0px solid #869198 !important; border-bottom: 1px solid #869198 !important;
+}
+td.col-divided td.editor-col:last-of-type {
+border-bottom: 0 !important;
+}
+.col-divided {
+padding: 0 20px !important;
+}
+td.col-divided .editor-col .editor-text {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.col-divided .editor-col .editor-image.editor-image-hspace-on td {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.col-divided .editor-col .editor-button-container {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.col-divided .editor-col .editor-social td {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+td.col-divided .editor-col .block-margin {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+.action-block .poll-answer {
+width: 100% !important; display: block !important;
+}
+.action-block .poll-button {
+width: 100% !important;
+}
+div.MobileFooter {
+font-size: 11px !important;
+}
+td.FooterMobile {
+padding: 0px 10px 0px 10px !important;
+}
+td.MainCenter {
+width: 100% !important;
+}
+table.MainSide {
+display: none !important;
+}
+img.MainSide {
+display: none !important;
+}
+td.MainSide {
+display: none !important;
+}
+.rsvp-button-inner {
+padding: 0px 0px 10px 0px !important;
+}
+.rsvp-button-outer {
+width: 100% !important; max-width: 100% !important;
+}
+.footer-main-width {
+width: 100% !important;
+}
+.footer-mobile-hidden {
+display: none !important;
+}
+.footer-mobile-hidden {
+display: none !important;
+}
+.footer-column {
+display: block !important;
+}
+.footer-mobile-stack {
+display: block !important;
+}
+.footer-mobile-stack-padding {
+padding-top: 3px;
+}
+}
+@media only screen and (max-width:320px) {
+.layout {
+padding: 0px 0px 0px 0px !important;
+}
+}
+@media screen {
+@font-face {
+font-family: ''; font-style: normal; font-weight: 400; src: local(''), local(''), url() format(''); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+}
+</style>
+</head>
+<body class="body" align="center" style="width: 100%; min-width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #e6e6e6; margin: 0px; padding: 0px;" bgcolor="#e6e6e6">
+<table class="template-body" border="0" cellpadding="0" cellspacing="0" style="text-align: center; min-width: 100%;" width="100%">
+<tr>
+<td class="preheader-container">
+<div>
+<div id="preheader" style="display: none; font-size: 1px; color: transparent; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+<span data-entity-ref="preheader">Join Us!</span>
+</div>
+<img src="http://r20.rs6.net/on.jsp?ca=276aca0e-0ab3-4ab9-9cff-98b5ffb3d8b6&a=1123022148799&c=95c90eda-7ab5-11ea-a51b-d4ae527557ea&ch=966b98d0-7ab5-11ea-a51b-d4ae527557ea" / alt="">
+</div>
+</td>
+</tr>
+<tr>
+<td class="template-shell-container" align="center">
+<div class="bgcolor" style="background-color: #e6e6e6;">
+<table class="bgimage" width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #e6e6e6;" bgcolor="#e6e6e6">
+<tbody>
+<tr>
+<td align="center">
+<table class="main-width" width="630" align="center" border="0" cellpadding="0" cellspacing="0" style="width: 630px;">
+<tbody>
+<tr>
+<td class="layout" align="center" valign="top" style="padding: 15px 5px;">
+<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="layout-container-border" align="center" valign="top" style="background-color: #869198; padding: 10px;" bgcolor="#869198">
+<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="background-color: #869198;" bgcolor="#869198">
+<tbody>
+<tr>
+<td class="layout-container" align="center" valign="top" style="background-color: #ffffff; padding: 0;" bgcolor="#ffffff">
+<div class="">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class="editor-logo editor-col OneColumnMobile" width="100%" align="left" valign="top">
+<div class="gl-contains-image">
+<table class="editor-image logo-container editor-image-vspace-on" style="min-width: 100%;" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="publish-container">  <img alt="" class="" style="display: block; height: auto; max-width: 100%;" width="280" border="0" hspace="0" vspace="0" src="https://files.constantcontact.com/fb416597501/9e910f4c-b225-415c-af34-870f6271802e.jpg">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class="headline editor-col OneColumnMobile" width="100%" align="left" valign="top" style="background-color: rgb(189, 60, 153);" bgcolor="BD3C99">
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text headline-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 24px; color: #717a80; text-align: center; display: block; word-wrap: break-word; line-height: 1.2; font-weight: bold; padding: 10px 20px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div><span style="color: rgb(255, 255, 255);">Keeping Kids Safe in a COVID World </span></div>
+<div>
+<span style="color: rgb(255, 255, 255);">&#xfeff;Best Practices</span><span style="color: rgb(255, 255, 255); font-size: 24px; font-family: Arial, Verdana, Helvetica, sans-serif; font-weight: bold;"> </span>
+</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class=" editor-col OneColumnMobile" width="100%" align="" valign="top">
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text content-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: left; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px 20px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div>
+<span style="font-size: 14px; color: rgb(99, 99, 99);">The Department of Orthopedic Surgery at Mount Sinai is here for you and your family. We are hosting a free webinar on Wednesday, May 20, 2020 at 4:00 PM(EDT)</span><span style="font-size: 14px; color: rgb(99, 99, 99); background-color: rgb(255, 255, 255);"> </span><span style="font-size: 14px; color: rgb(99, 99, 99);">on how to keep your kids safe while at home during the COVID-19 pandemic.</span>
+</div>
+<div><br></div>
+<div><span style="font-size: 14px; color: rgb(99, 99, 99);">Learn more about engaging kids in exercise, preventing and managing injuries, when to seek medical treatment and more from our faculty members. </span></div>
+<div><br></div>
+<div>
+<span style="font-size: 14px; color: rgb(99, 99, 99);">This event will be broadcast on YouTube live and will not require a login. You can tune in by clicking the link below. If you are unable to join, the presentation will be available to view anytime on YouTube and our </span><a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-KovtpkRbFNXA0ke5SK3cvWygDOsNI-eDOnQv8n_-aq0-SoUDkX7mx-FgVBRzxQ4ahLvvF_lt9SObTjGgvNY5xsMdK2Y_c2b8SRnqAD_2M7ykjCB6KUrV0E=&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" rel="noopener noreferrer" target="_blank" style="font-size: 14px; color: rgb(41, 47, 240); font-weight: normal; font-style: normal; text-decoration: underline;">website</a><span style="font-size: 14px; color: rgb(99, 99, 99);">.</span>
+</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class=" editor-col OneColumnMobile" width="100%" align="" valign="top">
+<div class="gl-contains-button">
+<table class="editor-button" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; min-width: 100%;">
+<tbody>
+<tr>
+<td class="editor-button-container editor-button-container " style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none; padding: 10px 20px;">
+<table class="galileo-ap-content-editor" style="width: 100%; min-width: 100%;">
+<tbody>
+<tr>
+<td align="center" valign="top" class="MainTextFullWidthTD" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none; padding: 0px;">
+<table border="0" cellpadding="0" cellspacing="0" style="background-color: rgb(54, 97, 189); width: initial; border-spacing: 0; min-width: initial; padding: 0; border: none;" bgcolor="3661BD">
+<tbody>
+<tr>
+<td align="center" valign="top" class="MainTextFullWidthTD" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none; padding: 9px 15px 10px;">
+<div>
+<div class="MainTextFullWidth"><a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-GNmOqAJNRnFfbjh597r4MEcezRIemSndwvbY4QLN2tgHC7oFlEPnKxpb4Wv1RQ4wtiJuemXyjXOgb5ApcTdUMdd2R8vwICqwmG-96_v4hrCgdcVGBgYn5s=&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none;">Webinar Link</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class=" editor-col OneColumnMobile" width="100%" align="" valign="top" style="background-color: rgb(189, 60, 153);" bgcolor="BD3C99">
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text editor-text " align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: left; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px 20px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div><div style="text-align: center;" align="center"><span style="font-size: 36px; color: rgb(255, 255, 255); font-weight: bold;">Faculty Presentations</span></div></div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class="three-column editor-col OneColumnMobile" width="33%" align="left" valign="top">
+<div><div class="column-resize-bar">
+<span class="line"></span>
+<span class="grabber"></span>
+</div></div>
+<div class="gl-contains-image">
+<table class="editor-image  editor-image-vspace-on" style="min-width: 100%;" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="publish-container">  <img alt="" class="" style="display: block; height: auto !important; max-width: 100% !important;" width="144" border="0" hspace="0" vspace="0" src="https://files.constantcontact.com/fb416597501/ce2e5653-e03b-47b5-8017-40b31db7db60.jpg">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text center-text three-column-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: center; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px 0px 10px 20px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div><span style="font-weight: bold;">Leesa M. Galatz, MD</span></div>
+<div><br></div>
+<div>Introduction</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td class="three-column editor-col OneColumnMobile" width="33%" align="left" valign="top">
+<div><div class="column-resize-bar">
+<span class="line"></span>
+<span class="grabber"></span>
+</div></div>
+<div class="gl-contains-image">
+<table class="editor-image  editor-image-vspace-on" style="min-width: 100%;" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="publish-container">  <img alt="" class="" style="display: block; height: auto !important; max-width: 100% !important;" width="156" border="0" hspace="0" vspace="0" src="https://files.constantcontact.com/fb416597501/3d503ef2-a87e-4ef5-ac00-ccae16ad50f8.jpg">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text center-text three-column-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: center; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div><span style="font-weight: bold;">Abigail K.Allen, MD</span></div>
+<div><br></div>
+<div>Tips for Active Kids</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td class="three-column editor-col OneColumnMobile" width="33%" align="left" valign="top">
+<div class="gl-contains-image">
+<table class="editor-image editor-image  editor-image-vspace-on" style="min-width: 100%;" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="publish-container">  <img alt="" class="" style="display: block; height: auto !important; max-width: 100% !important;" width="126" border="0" hspace="0" vspace="0" src="https://files.constantcontact.com/fb416597501/e479e222-ad1a-47e8-aa04-cdedd36f1adf.png">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text center-text three-column-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: center; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px 20px 10px 0px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div><span style="font-weight: bold;">Alexis C. Colvin, MD</span></div>
+<div><br></div>
+<div>Should I Take My Kid to the Doctor? Focus: Lower Extremity</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class="three-column editor-col OneColumnMobile" width="50%" align="left" valign="top">
+<div><div class="column-resize-bar">
+<span class="line"></span>
+<span class="grabber"></span>
+</div></div>
+<div class="gl-contains-image">
+<table class="editor-image  editor-image-vspace-on" style="min-width: 100%;" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="publish-container">  <img alt="" class="" style="display: block; height: auto !important; max-width: 100% !important;" width="190" border="0" hspace="0" vspace="0" src="https://files.constantcontact.com/fb416597501/ab7d0d00-d48e-4201-8b8d-fc45e5ee5093.jpg">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text center-text three-column-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: center; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px 10px 10px 20px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div><span style="font-size: 12px; color: rgb(53, 53, 53); font-weight: bold;">Sheena Ranade, MD</span></div>
+<div><br></div>
+<div>
+<span style="font-size: 12px; color: black; font-family: Arial, Verdana, Helvetica, sans-serif;">Preventing injury after weeks of shelter at home</span><span style="font-size: 16px; color: black; font-family: Calibri, Helvetica, Arial, sans-serif;">-</span><span style="font-size: 12px; color: black; font-family: Arial, Verdana, Helvetica, sans-serif;">role for warmup, strengthening and conditioning</span>
+</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td class="three-column editor-col OneColumnMobile" width="50%" align="left" valign="top">
+<div class="gl-contains-image">
+<table class="editor-image  editor-image-vspace-on" style="min-width: 100%;" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="publish-container">  <img alt="" class="" style="display: block; height: auto !important; max-width: 100% !important;" width="167" border="0" hspace="0" vspace="0" src="https://files.constantcontact.com/fb416597501/4ae7c177-41da-43eb-83be-0596dea0810a.jpg">
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="gl-contains-text">
+<table width="100%" style="min-width: 100%;" cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td class="editor-text center-text three-column-text" align="left" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px; color: #403F42; text-align: center; display: block; word-wrap: break-word; line-height: 1.2; padding: 10px 20px 10px 10px;">
+<div></div>
+<div class="text-container galileo-ap-content-editor"><div>
+<div><span style="font-weight: bold;">Brad Parsons, MD</span></div>
+<div><br></div>
+<div><span style="font-size: 12px;">Keeping Your Kids Exercising During the Pandemic</span></div>
+<div><br></div>
+<div><span style="font-size: 12px; color: rgb(61, 70, 77);">Home-Triaging Your Child's Arm</span></div>
+<div><span style="font-size: 12px; color: rgb(61, 70, 77);">Injury: When to Get it Checked</span></div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class=" editor-col OneColumnMobile" width="100%" align="" valign="top">
+<div class="gl-contains-button">
+<table class="editor-button" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; min-width: 100%;">
+<tbody>
+<tr>
+<td class="editor-button-container " style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none; padding: 10px 20px;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="galileo-ap-content-editor" style="width: 100%; min-width: 100%;">
+<tbody>
+<tr>
+<td class="MainTextFullWidthTD" align="center" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none; padding: 0px;">
+<table border="0" cellpadding="0" cellspacing="0" style="background-color: rgb(54, 97, 189); width: initial; border-spacing: 0; min-width: initial; padding: 0; border: none;" bgcolor="3661BD">
+<tbody>
+<tr>
+<td class="MainTextFullWidthTD" align="center" valign="top" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none; padding: 9px 15px 10px;">
+<div>
+<div class="MainTextFullWidth"><a href="#" style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 14px; color: #FFFFFF; text-decoration: none;">Follow us on Social!</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="galileo-ap-layout-editor" style="min-width: 100%;">
+<tbody>
+<tr>
+<td class=" editor-col OneColumnMobile" width="100%" align="" valign="top">
+<div class="gl-contains-social-button">
+<table class="editor-social" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; min-width: 100%;">
+<tbody>
+<tr>
+<td class=" social-container social-container" align="center" style="padding: 0px 20px 10px;">
+<div class="galileo-ap-content-editor">
+<a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-BtW3HZe4DkZwEOoaUXVZts6SUT3_iw_WYG3Yb6WCy5dXkfW6OrNQq4JigSarxcKEi89qSWnJZvg-aFQBPoCvCNe2LSjH-G5ZV5WTych7gkGkZ3rWEDbDsE=&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" style="display: inline-block; text-decoration: none;">
+<img alt="Facebook" width="32" border="0" src="https://imgssl.constantcontact.com/galileo/images/templates/Galileo-SocialMedia/facebook-visit-default-circle.png" style="display: inline-block; margin: 0; padding: 0;"> &#x200c;
+</a>
+<a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-BB5ctKEPjcVcfQccb93_Y4KJcde9ue6yRy2gHgQ9neExeDSgxNS7vFBlnYckYMb12XpH2Om9LIqrq16WVH6cC9Xk5BG3xgc9uCj1_3csUpl&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" style="display: inline-block; text-decoration: none;">
+<img alt="Twitter" width="32" border="0" src="https://imgssl.constantcontact.com/galileo/images/templates/Galileo-SocialMedia/twitter-visit-default-circle.png" style="display: inline-block; margin: 0; padding: 0;"> &#x200c;
+</a>
+<a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-BB5ctKEPjcVN0SBLygEKhBojzCmFnj1VPYHtLY61xci6FxhHLu72BdYUIzul5lrBhThk7Wvssfof0M18gCu21l6FWCtwdnRfQFGKygip4_bxnWO_v7PFwetzb7vH3SBew==&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" style="display: inline-block; text-decoration: none;">
+<img alt="Instagram" width="32" border="0" src="https://imgssl.constantcontact.com/galileo/images/templates/Galileo-SocialMedia/instagram-visit-default-circle.png" style="display: inline-block; margin: 0; padding: 0;"> &#x200c;
+</a>
+<a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-FVamnddqdw4rKFO5CG8cUAmrqQgRPCMSPr6BHzauB6yQhkCKsT7VFO480KWg0i1y8H_tIBlkFWt-quPeJYhhyeiSjXLDsAvhNDYQl31xXVsfIZZF5jcFIbGxJ1QVQNSKfpD-dwJMY4j&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" style="display: inline-block; text-decoration: none;">
+<img alt="LinkedIn" width="32" border="0" src="https://imgssl.constantcontact.com/galileo/images/templates/Galileo-SocialMedia/linkedin-visit-default-circle.png" style="display: inline-block; margin: 0; padding: 0;"> &#x200c;
+</a>
+<a href="http://r20.rs6.net/tn.jsp?f=001Lb4GVUWJkqgWXEAFgCJXy0bkwvdL7aTeOrVFNVVxj5br2BX61tCf-GNmOqAJNRnF4hqeq3OpRGp-vO3WB_38gU8VQlQmESu_vArwCnz84Vgo1LVbaidzmCWDy7WRKJxnBlysLR4yYEYLProjhzjP5tD8t3zyySslW08SzXTJ940=&c=VXer489phKpjrHi4UH3WunwbN_dkKOJ3kYQ4VUOSordQ5NdDQY3nGA==&ch=_ccOSOcOqw5oqRphKfLSQPiCgTisIiS91AUHuaaO5slZnqEURqJWqw==" style="display: inline-block; text-decoration: none;">
+<img alt="YouTube" width="32" border="0" src="https://imgssl.constantcontact.com/galileo/images/templates/Galileo-SocialMedia/youtube-visit-default-circle.png" style="display: inline-block; margin: 0; padding: 0;"> &#x200c;
+</a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</table>
+<table class="footer-container" width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; margin-left: auto; margin-right: auto; table-layout: auto !important" bgcolor="#ffffff">
+  <tr>
+    <td width="100%" align="center" valign="top" style="width: 100%;">
+      <div class="footer-max-main-width" align="center" style="margin-left: auto; margin-right: auto; max-width: 100%;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td class="footer-layout" align="center" valign="top" style="padding: 16px 0px;">
+              <table class="footer-main-width" style="width: 580px;" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="footer-text" align="center" valign="top" style="color: #5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4px 0px;">
+                    
+                    <span class="footer-column">Mount Sinai Department of Orthopedic Surgery<span class="footer-mobile-hidden"> | </span></span><span class="footer-column">5 East 98th St<span class="footer-mobile-hidden">, </span></span><span class="footer-column"></span><span class="footer-column"></span><span class="footer-column">New York, NY 10029</span><span class="footer-column"></span>
+                    
+                  </td>
+                </tr>
+                <tr>
+                  <td class="footer-row" align="center" valign="top" style="padding: 10px 0px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="footer-text" align="center" valign="top" style="color: #5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4px 0px;">
+                          <a href="https://visitor.constantcontact.com/do?p=un&m=001npbIzmRkfYhT7ISb6Jv8Kg%3D&ch=966b98d0-7ab5-11ea-a51b-d4ae527557ea&ca=276aca0e-0ab3-4ab9-9cff-98b5ffb3d8b6" style="color: #5d5d5d">Unsubscribe grahfoster@gmail.com</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="footer-text" align="center" valign="top" style="color: #5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4px 0px;">
+                          
+                          
+                          <a class="footer-about-provider" href="http://www.constantcontact.com/legal/about-constant-contact" style="color: #5d5d5d">About Constant Contact</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="footer-text" align="center" valign="top" style="color: #5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4px 0px;">
+                          Sent by
+                          
+                          <a href="mailto:orthopedics@mountsinai.org" style="color: #5d5d5d; text-decoration: none">orthopedics@mountsinai.org</a>
+                          
+
+                          
+                          
+                          <span class="footer-column">in collaboration with</span>
+                          
+                          
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="footer-text" align="center" valign="top" style="color: #5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4px 0px;">
+                    
+                    
+                    <table width="240" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center" valign="top" style="padding: 0px 0px 3px 10px;">
+                          <a href="http://www.constantcontact.com/index.jsp?cc=nge&rmc=VF19_3GE" style="color: #5d5d5d; text-decoration: none">
+                            <img alt="Trusted Email from Constant Contact - Try it FREE today." width="211" border="0" hspace="0" vspace="0" src="https://imgssl.constantcontact.com/ui/images1/logo_ctct_2x.png"></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="footer-cta-text" align="center" valign="top" style="color: #5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 9px;">
+                          <a href="http://www.constantcontact.com/index.jsp?cc=nge&rmc=VF19_3GE" style="color: #5d5d5d; text-decoration: none">Try email marketing for free today!</a>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                    
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table></body>
+</html>
+
+||||
+
+Delivered-To: grahfoster@gmail.com
+Received: by 2002:a17:90a:ac05:0:0:0:0 with SMTP id o5csp865503pjq;
+        Tue, 19 May 2020 14:00:23 -0700 (PDT)
+X-Received: by 2002:a6b:ea11:: with SMTP id m17mr772530ioc.149.1589922023863;
+        Tue, 19 May 2020 14:00:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589922023; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RTYynR7nTeztQuwtIKLIg9DxihlvX3pRrNKQoTUZ6ZmOUlwGIFazILumijjsNxqoCd
+         i6/UspUvK5NClXDCqmoQqCds/KegvSkY/uTJRuPAL3iM4TkDl4QmsQeD1CHTd84frrGG
+         2RnSOwVadPkBbD4qRp6j42GN7IbgGRDPhrGT1ciYmihf/wNA6L0wKMDfhjQoMliMmgLM
+         17QystG1tY9nnrph4N8MXp6m6sS0eef0G98/l7wSrV8IwUnvM5YxtWCgB7cfh9FX7O3c
+         8wlIbGUNtXAsa4f6rkz+cGsll29G5OGa0jEalSOazxCjA9iV+u1mtn202iGUS49zPxoW
+         w2vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:date:message-id:references:reply-to:mime-version
+         :dkim-signature;
+        bh=yk47Cgi9j8oLtTLmGQLaTbJOevL5wTlTb2dImt9CKgs=;
+        b=0ve2gWwwDz2s4OO4TR82+8wQhhJNV+fOzfIpx38vAVLefBc2hRnwierVNSHGoGuwGQ
+         MfaSSofDnxzmPLTCCg8XNODsovFBYBFYVLGhzG9Vi+oC2TIDNnQWQ2Jblgnf4J7bmkBE
+         DVc0OhbGd6iYgG5DJXCzBBZsPQhlxphbk29EVut2y+gbcNRZ+qFouDe5b9VFNIWGuicp
+         8s9fccjbadltfdnaS+cxo6uC0LaMd2z7xojkeS392xx0lHBqRGcxVA56o+zvJHviWiHQ
+         SW60uOTgFIPYLK23yQwgy23TF6XKW8DL5yIRUUl9pj8FvVmgpN/aAqBaqpisqDLKX3Gf
+         mY4w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=dXzOZmIO;
+       spf=pass (google.com: domain of 35ujexhqkcoqlzq3m-0pizm0-vwzmxt6owwotm.kwuozipnw01mzouiqt.kwu@doclist.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=35UjEXhQKCoQlzq3m-0pizm0-vwzmxt6owwotm.kwuozipnw01mzouiqt.kwu@doclist.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <35UjEXhQKCoQlzq3m-0pizm0-vwzmxt6owwotm.kwuozipnw01mzouiqt.kwu@doclist.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id i14sor1229257iow.34.2020.05.19.14.00.23
+        for <grahfoster@gmail.com>
+        (Google Transport Security);
+        Tue, 19 May 2020 14:00:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 35ujexhqkcoqlzq3m-0pizm0-vwzmxt6owwotm.kwuozipnw01mzouiqt.kwu@doclist.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=dXzOZmIO;
+       spf=pass (google.com: domain of 35ujexhqkcoqlzq3m-0pizm0-vwzmxt6owwotm.kwuozipnw01mzouiqt.kwu@doclist.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=35UjEXhQKCoQlzq3m-0pizm0-vwzmxt6owwotm.kwuozipnw01mzouiqt.kwu@doclist.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:reply-to:references:message-id:date:subject:from:to;
+        bh=yk47Cgi9j8oLtTLmGQLaTbJOevL5wTlTb2dImt9CKgs=;
+        b=dXzOZmIOUmPr0Qi2TWq0/N53lbewaaYT2JaXqnqNZEVSsXe+s+ZZz2MZQK689wLnWI
+         R6VdBoML824io46uFvUA+4Hag1BrGnIGVqW104jO3rS7rHFR9qjmeQQzIkZTeqOz4JWM
+         jvo3OYArt/WGuVl3uljkHRDL283TthwiCGtMB9tS+kVP+ZtgGsOY3uYG/k6C07c/U55e
+         vPnzLID43T9Rtx4VmKfVDyIlqvL5YNbvqTswyw8QK1qpW0+XRkG2uAY98ofVWgzbnvgu
+         pm0KLTohWIQe9rP4zZObMPXbhJHsGBnEp6KwR9yp/lAER6sGzLyQv9wfofgtX4OvhgMS
+         2pgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:reply-to:references:message-id:date
+         :subject:from:to;
+        bh=yk47Cgi9j8oLtTLmGQLaTbJOevL5wTlTb2dImt9CKgs=;
+        b=OJHAdxmkRa46aNBd3Z8iqPl94H5KDoWdDc2jyk2jAzyFNCEyLyoCNDFgoPPAw5UGfs
+         z9tRBl8YARp8zEqfl5ckjLpDjNCacY2l7KQGsKMfILVMYTj37/UkhInKMdnbABt0AttO
+         p5/nTpJ9mO/7RVZ63LaxJvEnhhbRtbB08f4hJsq1YvDSafC6ghozlGj0tsq6AuavU8a0
+         9Cnmvf7Eh/u5RMkj7NFJoS6Hh0LzutHFztdxDlU5VPbAC4aGR0vAHVxMeNp35UdSoS8W
+         kXQBubLIa7ileCVSns6Uw9aEnZatCg9mizDxSsMMZEeAEXwngEefQd9Gq53Oy5cNQQzG
+         ceCg==
+X-Gm-Message-State: AOAM533X9MJQqwl46FNMTAyy+X9kaemTSTh4pMFx+BgOLaaEtNBb5mcO
+	gaea6s84NIKPt/kGZP/LvyWCABaZMqp3jolgR56l9KqHNSs/YgJiFOUS1haC1d0mrw5FyxMK7pF
+	PMpV4VlLt3/0FMwqB+2PCeikL24hZT5UkYngj2KdP1K/Wo2mIB7j0SEMuPkn9/Ow+xVyai23Mkz
+	mD69NJBA==
+X-Google-Smtp-Source: ABdhPJx4jDcjguap0DpgvzBUNEm1/+g2P6hNGcTe3sSSVV2SRiP7arjwZ9uiPp176qMEmSYMUEAqzPe6Ywc=
+MIME-Version: 1.0
+X-Received: by 2002:a02:ce26:: with SMTP id v6mr1560536jar.40.1589922021611;
+ Tue, 19 May 2020 14:00:21 -0700 (PDT)
+Reply-To: Ian Williams <iwilliam@alumni.risd.edu>
+X-No-Auto-Attachment: 1
+References: <c74bbd8e-ccf3-422d-953b-83cf04a80173@docs-share.google.com>
+Message-ID: <00000000000051c84005a60691e0@google.com>
+Date: Tue, 19 May 2020 21:00:21 +0000
+Subject: Sample 2.0 - Invitation to edit
+From: "Ian Williams (via Google Docs)" <drive-shares-noreply@google.com>
+To: grahfoster@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000051c82705a60691dd"
+
+--00000000000051c82705a60691dd
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+I've shared an item with you:
+
+Sample 2.0
+https://docs.google.com/document/d/1_ulkqjV0oWCNEB5GN9tc4enpXXPtuZygETkri-fVk1o/edit?usp=sharing&ts=5ec448e5
+
+It's not an attachment -- it's stored online. To open this item, just click  
+the link above.
+
+--00000000000051c82705a60691dd
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head></head><body><script type=3D"application/json" data-scope=3D"in=
+boxmarkup">{"publisher":{"api_key":"1e6ef4c2b3e67680225868caeb59b7ad","name=
+":"Google Docs"},"api_version":"1.0","updates":{"snippets":[{"icon":"PERSON=
+","message":"Ian Williams has invited you to edit this document"}],"action"=
+:{"name":"Open","url":"https://docs.google.com/document/d/1_ulkqjV0oWCNEB5G=
+N9tc4enpXXPtuZygETkri-fVk1o/edit?usp\u003dsharing_eid\u0026ts\u003d5ec448e5=
+"}},"entity":{"main_image_url":"https://ssl.gstatic.com/bt/C3341AA7A1A07675=
+6462EE2E5CD71C11/smartmail/bt_google_docs_1600dp_r2.png","external_key":"1_=
+ulkqjV0oWCNEB5GN9tc4enpXXPtuZygETkri-fVk1o","avatar_image_url":"https://www=
+.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/smartmail/bt_google_docs_a=
+vatar_224dp_r1.png","subtitle":"shared by Ian Williams","action":{"name":"O=
+pen in Docs","url":"https://docs.google.com/document/d/1_ulkqjV0oWCNEB5GN9t=
+c4enpXXPtuZygETkri-fVk1o/edit"},"title":"Sample 2.0"}}</script><div style=
+=3D"width: 100%; padding: 24px 0 16px 0; background-color: #f5f5f5; text-al=
+ign: center;"><div style=3D"display: inline-block; width: 90%; max-width: 6=
+80px;min-width: 280px; text-align: left; font-family: Roboto,Arial,Helvetic=
+a,sans-serif;"><div style=3D"height: 0px;" dir=3D"ltr"></div><div style=3D"=
+display: block; padding: 0 2px;"><div style=3D"display: block; background: =
+#fff; height: 2px;"></div></div><div style=3D"border-left: 1px solid #f0f0f=
+0; border-right: 1px solid #f0f0f0;"><div style=3D"padding: 24px 32px 24px =
+32px; background:#fff; border-right: 1px solid #eaeaea; border-left: 1px so=
+lid #eaeaea;" dir=3D"ltr"><div style=3D"font-size: 14px; line-height: 18px;=
+ color: #444;"><a href=3D"mailto:iwilliam@alumni.risd.edu" style=3D"color:i=
+nherit;text-decoration:none">iwilliam@alumni.risd.edu</a> has invited you t=
+o <b>edit</b> the following document:</div><div style=3D"height: 10px;"></d=
+iv><div style=3D"font-size: 18px; display: table;"><div style=3D"display: t=
+able-row; border-bottom: 4px solid #fff;"><span style=3D"display: table-cel=
+l;"><div style=3D"height: 32px;"><img src=3D"https://ssl.gstatic.com/docs/d=
+oclist/images/mediatype/icon_1_document_x64.png" aria-label=3D"Document" st=
+yle=3D"vertical-align: middle; max-width: 24px;"/></div></span><span style=
+=3D"display: table-cell; padding-left: 12px; word-break: break-word;"><a hr=
+ef=3D"https://docs.google.com/document/d/1_ulkqjV0oWCNEB5GN9tc4enpXXPtuZygE=
+Tkri-fVk1o/edit?usp=3Dsharing_eil&amp;ts=3D5ec448e5" style=3D"color: #3367d=
+6; text-decoration: none; vertical-align: middle;">Sample 2.0</a><div itemp=
+rop=3D"action" itemscope itemtype=3D"http://schema.org/ViewAction"><meta it=
+emprop=3D"url" content=3D"https://docs.google.com/document/d/1_ulkqjV0oWCNE=
+B5GN9tc4enpXXPtuZygETkri-fVk1o/edit?usp=3Dsharing_eil&amp;ts=3D5ec448e5"></=
+div></span></div></div><div style=3D"height: 32px;"></div><div><a href=3D"h=
+ttps://docs.google.com/document/d/1_ulkqjV0oWCNEB5GN9tc4enpXXPtuZygETkri-fV=
+k1o/edit?usp=3Dsharing_eip&amp;ts=3D5ec448e5" target=3D"_blank" style=3D"ba=
+ckground-color: #4d90fe; border: 1px solid #3079ed; border-radius: 2px; col=
+or: white; display: inline-block; font: bold 11px Roboto,Arial,Helvetica,sa=
+ns-serif; height: 29px; line-height: 29px; min-width: 54px; outline: 0px; p=
+adding: 0 8px; text-align: center; text-decoration: none">Open in Docs</a><=
+/div></div></div><table style=3D"width: 100%; border-collapse: collapse;" r=
+ole=3D"presentation"><tr><td style=3D"padding: 0px;"><table style=3D"border=
+-collapse: collapse; width: 3px;" role=3D"presentation"><tr height=3D"1"><t=
+d width=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px;"></td><td width=3D=
+"1" bgcolor=3D"#eaeaea" style=3D"padding: 0px;"></td><td width=3D"1" bgcolo=
+r=3D"#e5e5e5" style=3D"padding: 0px;"></td></tr><tr height=3D"1"><td width=
+=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px;"></td><td width=3D"1" bgc=
+olor=3D"#eaeaea" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#e=
+aeaea" style=3D"padding: 0px;"></td></tr><tr height=3D"1"><td width=3D"1" b=
+gcolor=3D"#f5f5f5" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"=
+#f0f0f0" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#f0f0f0" s=
+tyle=3D"padding: 0px;"></td></tr></table></td><td style=3D"width: 100%; pad=
+ding: 0px;"><div style=3D"height: 1px; width: auto; border-top: 1px solid #=
+ddd; background:#eaeaea; border-bottom: 1px solid #f0f0f0;"></div></td><td =
+style=3D"padding: 0px;"><table style=3D"border-collapse: collapse; width: 3=
+px;" role=3D"presentation"><tr height=3D"1"><td width=3D"1" bgcolor=3D"#e5e=
+5e5" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#eaeaea" style=
+=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"paddin=
+g: 0px;"></td></tr><tr height=3D"1"><td width=3D"1" bgcolor=3D"#eaeaea" sty=
+le=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#eaeaea" style=3D"padd=
+ing: 0px;"></td><td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px;"=
+></td></tr><tr height=3D"1"><td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"pa=
+dding: 0px;"></td><td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px=
+;"></td><td width=3D"1" bgcolor=3D"#f5f5f5" style=3D"padding: 0px;"></td></=
+tr></table></td></tr></table><table style=3D"padding: 14px 10px 0 10px;" ro=
+le=3D"presentation" dir=3D"ltr"><tr><td style=3D"width: 100%; font:11px Rob=
+oto,Arial,Helvetica,sans-serif; color:#646464; line-height: 20px; min-heigh=
+t: 40px; vertical-align: middle;">Google Docs: Create and edit documents on=
+line. <br/>Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, =
+USA<br/> You have received this email because <a href=3D"mailto:iwilliam@al=
+umni.risd.edu" style=3D"color:inherit;text-decoration:none">iwilliam@alumni=
+.risd.edu</a> shared a document with you from Google Docs.</td><td style=3D=
+"padding-left: 20px; vertical-align: middle;"><a href=3D"https://drive.goog=
+le.com" target=3D"_blank"><img src=3D"https://www.gstatic.com/images/brandi=
+ng/googlelogo/1x/googlelogo_tm_black54_color_96x40dp.png" width=3D"96" alt=
+=3D"Logo for Google Docs" border=3D"0"></a></td></tr></table></div></div></=
+body></html>
+
+||||
+
+Delivered-To: grahfoster@gmail.com
+Received: by 2002:a17:90a:ac05:0:0:0:0 with SMTP id o5csp711716pjq;
+        Tue, 19 May 2020 10:27:53 -0700 (PDT)
+X-Received: by 2002:a67:f4cf:: with SMTP id s15mr155276vsn.201.1589909273243;
+        Tue, 19 May 2020 10:27:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589909273; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LkljdAezmqHCqm13Y16YFwfL90P+WgpfYDnZ6FmBIVFW1hKyIamJ7EGGxKdDe/pOUf
+         ci75Gd+RK1ZJRplDZ3YPAj/rlXHkNuJVvFhyFBZqWYx72KYlJOEFQIZSCunyh8P5asCO
+         Uu2C9Hbxgk8dmeW6ZpkpJcwXScSUfiFT4dWdVxuf9AtzUJkzWHLG8J908lZdBk5QtSZK
+         y825/FvyQwKdwortcle7/NdXZlF607aHe92ZBBr11wxManyt6JkN7cFmKZPG+EaAk715
+         uPFgejrGAg64aCCZPHzRiKjmuFqNYXmOfKUu/u3pvyyMi5ITUULZo8fCkiDfG0jRTA/1
+         fycg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:date:message-id:references:reply-to:mime-version
+         :dkim-signature;
+        bh=6O/2skPQzzYUflJ+FmYUXlX22nIAjkhbYPHZ6kyOcVw=;
+        b=CcJ4QG983e/rxxoOfg8oDbyy/oipMQWXsBQHbt147zwOLmt5bgH23qUph9VKw7tu3x
+         La/kICa66DnWQibkRv4flliT1I75Bq5Jl8vBEJmGgq7bgcEspq8oT9VkjuR9U9SagD7m
+         YDYA94GR1U5S3yVCE43+ZvCVmbkyoKRc5xl51oeaXmDFQTB7uv8pT8qTXXt3QfnEpjpO
+         sDzaaoDxlnCUOMO23B5a1IXkFX7Ouvr+mZG+QTAqJ8+aTbrJK9nS3KOcvUpKbFrpcJV6
+         PqdRiho2VM0mqXgHJoY/25E7BPgpulIS2Q9tM1qjKVZT/149tJOPix+KN9iwljL2uiQM
+         eKrw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=bJWhUdaK;
+       spf=pass (google.com: domain of 3gbfexhqkclmyc3gz-d2vczd-89cza6j19916z.x971cv209dezc17v36.x97@doclist.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3GBfEXhQKClMyC3Gz-D2vCzD-89CzA6J19916z.x971Cv209DEzC17v36.x97@doclist.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3GBfEXhQKClMyC3Gz-D2vCzD-89CzA6J19916z.x971Cv209DEzC17v36.x97@doclist.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id t20sor357581vsq.14.2020.05.19.10.27.52
+        for <grahfoster@gmail.com>
+        (Google Transport Security);
+        Tue, 19 May 2020 10:27:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3gbfexhqkclmyc3gz-d2vczd-89cza6j19916z.x971cv209dezc17v36.x97@doclist.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=bJWhUdaK;
+       spf=pass (google.com: domain of 3gbfexhqkclmyc3gz-d2vczd-89cza6j19916z.x971cv209dezc17v36.x97@doclist.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3GBfEXhQKClMyC3Gz-D2vCzD-89CzA6J19916z.x971Cv209DEzC17v36.x97@doclist.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=mime-version:reply-to:references:message-id:date:subject:from:to;
+        bh=6O/2skPQzzYUflJ+FmYUXlX22nIAjkhbYPHZ6kyOcVw=;
+        b=bJWhUdaKU0ylMSD8uh+HawjrD9OW3K3ch+pp5mlxiNdbOYMqmfg/rTdO+PpDV4BtDL
+         zXYZPwtxIc9mvZq5VxkOruFa/uIUe0SehU6a587e4vmZDlp7YynXkyLgX+f+CceBqYTi
+         sEjB0wXyT77YZEZLjypzLXiUYk3EyqLeCozz5uavEONNm5aqpfmLmqM0eVI5oow2v60C
+         pR0X+a3kXwoozzxtDVEhou9qxnX3vQKBpCHrGaq9y1Vo25AQkMoGCYDPRPig6eDVwxYz
+         0/LQRHKcpfUSXny4vVSfVkq6TZsV1Q/MQFtM606dgE+Ur2hGrnwIBMy/vvdpieoJRPYV
+         fqsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:reply-to:references:message-id:date
+         :subject:from:to;
+        bh=6O/2skPQzzYUflJ+FmYUXlX22nIAjkhbYPHZ6kyOcVw=;
+        b=dJvCI8dJOz2AiIuXq8C84Gmr0lkjXieJq3of9yqWVdfFijaL4DeyhPyySK5Bn+yOJ4
+         dQTjjolV9tCtyLwrjDc4esZjc/NIVZnFIV1yu4xcOh3hKAADOgukUN57sNkk/v1/YJ7q
+         +PC9XLmqpavGawWIczTbwSJoDLmPvpTefYwjwZHQNizdflAHzKnmWMN9mM/+wZbayESK
+         IgxQR9LqAPSPbJeE3vPcjqQE6ABKkjFFcS3ArPrj697C1rD1Ps8nDp5wpL2n2iRsWhQN
+         4esYVR3O/9VoxHiqmN+6R1MOKnmv9QmH/F/F6L08Nn3dsRIEoM/bkqwxQ3qqpHV9ljjy
+         fBqw==
+X-Gm-Message-State: AOAM530oHzJKZkFXB825T2ukXyyqThYKGW/xiwNVW0QhOrpWTscYpNz7
+	pVy5H2QZ26eJWEI2npq/C8FupJHsJSJq5w==
+X-Google-Smtp-Source: ABdhPJx8h7NT9lCvUH/eW+NENEcXo7lKGEMydUJyoRbs405AMjGCHgMMPA7n55cAhJTiHwKFXaixqbtwNKg=
+MIME-Version: 1.0
+X-Received: by 2002:a67:ff89:: with SMTP id v9mr189854vsq.55.1589909272506;
+ Tue, 19 May 2020 10:27:52 -0700 (PDT)
+Reply-To: Jerry James <jerryj@g.clemson.edu>
+X-No-Auto-Attachment: 1
+References: <9080b31d-cb94-4069-bfd8-53dce63940fe@docs-share.google.com>
+Message-ID: <00000000000069cf1405a6039967@google.com>
+Date: Tue, 19 May 2020 17:27:52 +0000
+Subject: Ascended memes - Invitation to edit
+From: "Jerry James (via Google Docs)" <drive-shares-noreply@google.com>
+To: grahfoster@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000069cefd05a6039964"
+
+--00000000000069cefd05a6039964
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+I've shared an item with you:
+
+Ascended memes
+https://docs.google.com/document/d/1zyfILBIBE4n6SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w/edit?usp=sharing&ts=5ec41718
+
+It's not an attachment -- it's stored online. To open this item, just click  
+the link above.
+
+--00000000000069cefd05a6039964
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head></head><body><script type=3D"application/json" data-scope=3D"in=
+boxmarkup" nonce=3D"ZEdI51KSYlrWkPtlosHkrQ">{"publisher":{"api_key":"1e6ef4=
+c2b3e67680225868caeb59b7ad","name":"Google Docs"},"api_version":"1.0","upda=
+tes":{"snippets":[{"icon":"PERSON","message":"Jerry James has invited you t=
+o edit this document"}],"action":{"name":"Open","url":"https://docs.google.=
+com/document/d/1zyfILBIBE4n6SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w/edit?usp\u003ds=
+haring_eid\u0026ts\u003d5ec41718"}},"entity":{"main_image_url":"https://ssl=
+.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/smartmail/bt_google_docs_1=
+600dp_r2.png","external_key":"1zyfILBIBE4n6SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w"=
+,"avatar_image_url":"https://www.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD=
+71C11/smartmail/bt_google_docs_avatar_224dp_r1.png","subtitle":"shared by J=
+erry James","action":{"name":"Open in Docs","url":"https://docs.google.com/=
+document/d/1zyfILBIBE4n6SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w/edit"},"title":"Asc=
+ended memes"}}</script><div style=3D"width: 100%; padding: 24px 0 16px 0; b=
+ackground-color: #f5f5f5; text-align: center;"><div style=3D"display: inlin=
+e-block; width: 90%; max-width: 680px;min-width: 280px; text-align: left; f=
+ont-family: Roboto,Arial,Helvetica,sans-serif;"><div style=3D"height: 0px;"=
+ dir=3D"ltr"></div><div style=3D"display: block; padding: 0 2px;"><div styl=
+e=3D"display: block; background: #fff; height: 2px;"></div></div><div style=
+=3D"border-left: 1px solid #f0f0f0; border-right: 1px solid #f0f0f0;"><div =
+style=3D"padding: 24px 32px 24px 32px; background:#fff; border-right: 1px s=
+olid #eaeaea; border-left: 1px solid #eaeaea;" dir=3D"ltr"><div style=3D"fo=
+nt-size: 14px; line-height: 18px; color: #444;"><a href=3D"mailto:jerryj@g.=
+clemson.edu" style=3D"color:inherit;text-decoration:none">jerryj@g.clemson.=
+edu</a> has invited you to <b>edit</b> the following document:</div><div st=
+yle=3D"height: 10px;"></div><div style=3D"font-size: 18px; display: table;"=
+><div style=3D"display: table-row; border-bottom: 4px solid #fff;"><span st=
+yle=3D"display: table-cell;"><div style=3D"height: 32px;"><img src=3D"https=
+://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x64.png" a=
+ria-label=3D"Document" style=3D"vertical-align: middle; max-width: 24px;"/>=
+</div></span><span style=3D"display: table-cell; padding-left: 12px; word-b=
+reak: break-word;"><a href=3D"https://docs.google.com/document/d/1zyfILBIBE=
+4n6SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w/edit?usp=3Dsharing_eil&amp;ts=3D5ec41718=
+" style=3D"color: #3367d6; text-decoration: none; vertical-align: middle;">=
+Ascended memes</a><div itemprop=3D"action" itemscope itemtype=3D"http://sch=
+ema.org/ViewAction"><meta itemprop=3D"url" content=3D"https://docs.google.c=
+om/document/d/1zyfILBIBE4n6SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w/edit?usp=3Dshari=
+ng_eil&amp;ts=3D5ec41718"></div></span></div></div><div style=3D"height: 32=
+px;"></div><div><a href=3D"https://docs.google.com/document/d/1zyfILBIBE4n6=
+SoZSBo8WIiT1RHbIDM9aI_twKy3O_-w/edit?usp=3Dsharing_eip&amp;ts=3D5ec41718" t=
+arget=3D"_blank" style=3D"background-color: #4d90fe; border: 1px solid #307=
+9ed; border-radius: 2px; color: white; display: inline-block; font: bold 11=
+px Roboto,Arial,Helvetica,sans-serif; height: 29px; line-height: 29px; min-=
+width: 54px; outline: 0px; padding: 0 8px; text-align: center; text-decorat=
+ion: none">Open in Docs</a></div></div></div><table style=3D"width: 100%; b=
+order-collapse: collapse;" role=3D"presentation"><tr><td style=3D"padding: =
+0px;"><table style=3D"border-collapse: collapse; width: 3px;" role=3D"prese=
+ntation"><tr height=3D"1"><td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"padd=
+ing: 0px;"></td><td width=3D"1" bgcolor=3D"#eaeaea" style=3D"padding: 0px;"=
+></td><td width=3D"1" bgcolor=3D"#e5e5e5" style=3D"padding: 0px;"></td></tr=
+><tr height=3D"1"><td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px=
+;"></td><td width=3D"1" bgcolor=3D"#eaeaea" style=3D"padding: 0px;"></td><t=
+d width=3D"1" bgcolor=3D"#eaeaea" style=3D"padding: 0px;"></td></tr><tr hei=
+ght=3D"1"><td width=3D"1" bgcolor=3D"#f5f5f5" style=3D"padding: 0px;"></td>=
+<td width=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px;"></td><td width=
+=3D"1" bgcolor=3D"#f0f0f0" style=3D"padding: 0px;"></td></tr></table></td><=
+td style=3D"width: 100%; padding: 0px;"><div style=3D"height: 1px; width: a=
+uto; border-top: 1px solid #ddd; background:#eaeaea; border-bottom: 1px sol=
+id #f0f0f0;"></div></td><td style=3D"padding: 0px;"><table style=3D"border-=
+collapse: collapse; width: 3px;" role=3D"presentation"><tr height=3D"1"><td=
+ width=3D"1" bgcolor=3D"#e5e5e5" style=3D"padding: 0px;"></td><td width=3D"=
+1" bgcolor=3D"#eaeaea" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=
+=3D"#f0f0f0" style=3D"padding: 0px;"></td></tr><tr height=3D"1"><td width=
+=3D"1" bgcolor=3D"#eaeaea" style=3D"padding: 0px;"></td><td width=3D"1" bgc=
+olor=3D"#eaeaea" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#f=
+0f0f0" style=3D"padding: 0px;"></td></tr><tr height=3D"1"><td width=3D"1" b=
+gcolor=3D"#f0f0f0" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"=
+#f0f0f0" style=3D"padding: 0px;"></td><td width=3D"1" bgcolor=3D"#f5f5f5" s=
+tyle=3D"padding: 0px;"></td></tr></table></td></tr></table><table style=3D"=
+padding: 14px 10px 0 10px;" role=3D"presentation" dir=3D"ltr"><tr><td style=
+=3D"width: 100%; font:11px Roboto,Arial,Helvetica,sans-serif; color:#646464=
+; line-height: 20px; min-height: 40px; vertical-align: middle;">Google Docs=
+: Create and edit documents online. <br/>Google LLC, 1600 Amphitheatre Park=
+way, Mountain View, CA 94043, USA<br/> You have received this email because=
+ <a href=3D"mailto:jerryj@g.clemson.edu" style=3D"color:inherit;text-decora=
+tion:none">jerryj@g.clemson.edu</a> shared a document with you from Google =
+Docs.</td><td style=3D"padding-left: 20px; vertical-align: middle;"><a href=
+=3D"https://drive.google.com" target=3D"_blank"><img src=3D"https://www.gst=
+atic.com/images/branding/googlelogo/1x/googlelogo_tm_black54_color_96x40dp.=
+png" width=3D"96" alt=3D"Logo for Google Docs" border=3D"0"></a></td></tr><=
+/table></div></div></body></html>
+
+||||
+
+Delivered-To: grahfoster@gmail.com
+Received: by 2002:a17:90a:ac05:0:0:0:0 with SMTP id o5csp587219pjq;
+        Tue, 19 May 2020 07:59:48 -0700 (PDT)
+X-Received: by 2002:a37:a0d5:: with SMTP id j204mr21405427qke.128.1589900388316;
+        Tue, 19 May 2020 07:59:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589900388; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TMaRsFfznLosT2Oe7S+TLZ0GquRpLC1uAU5OqA4c92fouGO70GFPQ9z/kBodTUmnmF
+         Bfs2tMnoWcT3dv7E2vGJ9kvYYPQPgCOJyNDCrtNxpviiBUbkA4HhQ86ONgsMqiJNt7LG
+         ta9b6JQcUS8cTUkH0Kkfeh4g+F13Fx7bjMwThMDCkiCJkNgHLvQFGR7KLIGhlkLP//bX
+         WyPQjbH7yCHUSnIx3dcrMyFyjf9IhEgWs8qD/eTSD+UYJvdNsGgRYzYSYI00Vd7l030R
+         XAfzNqAa4SAN9brBGT/sCWS78KJBFbyPJUkYlpH1dLmOD4ncrGfPIT/XN2HnXGrXFIRT
+         0orA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=lXqv+8p5s9Ief/5RTkLOLR8CCmzqc6M680mYdOWphps=;
+        b=KD8J0z28dolaNUMFHnfzu4oGYHFQN49btpIckGExeV+fXtNBMHWom1b59bZL59kLOd
+         ZIS7pEQqrBkY/ObZb4SgWtPAtHONH2TRNTBzP58cGBflT2TmvGr94F8+68J5MJGbXBzU
+         M1wjhdQwAmOQqc5Gb1qVP4b7kuzfMj9CItrIFI5TVe0l1M3+LKLOiCvTOXmvQ/Qbm24q
+         m85VVwuBDwm/fsYOoo1Aw0dw7ptQ5nxM8n62Lw3Hdfn+tfY8lUJautTuWmliAN+B7sYC
+         GVlq31vidZ+aEisxr6Dtzgeqpccd1bTrMEx0CODDyrIO+1xVOpJBtezuYrr5VJHfj+3C
+         MAFA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vFR0Xsav;
+       spf=pass (google.com: domain of nancy.fried.foster@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nancy.fried.foster@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nancy.fried.foster@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id dk5sor13225978qvb.15.2020.05.19.07.59.47
+        for <grahfoster@gmail.com>
+        (Google Transport Security);
+        Tue, 19 May 2020 07:59:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nancy.fried.foster@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vFR0Xsav;
+       spf=pass (google.com: domain of nancy.fried.foster@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nancy.fried.foster@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=lXqv+8p5s9Ief/5RTkLOLR8CCmzqc6M680mYdOWphps=;
+        b=vFR0XsavUeMf5znxam6rjajWvlY3eq/PqxLljFGB7WuhjP/f2n0k0OlQ4HlmJwxKoh
+         Ca9NMdkoVsjyrT99kuq6usN3GYNRhOYzwhJ6RnfZdToihVAZ/oOzunUe0z1iD+qMoHNl
+         PIyLY6o5MdtudDU3rt3JNlYxgOpccggYm8jzKwtpUHfNNjyFY+mgJppL9CXkxeiHgWa3
+         ebZ5tVdc8l8PUEyDhFWxlXPvM0KvabNpTEale6UDB8qUcbZO77zPgPvD+uzsuXvnX8jR
+         HoyQ9HLH+IWOPn8c+MtXvMnThMjawVXf9NavtS8aGpIfOdE7r43ubvrnQ2NZd+zA+9NC
+         B2/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=lXqv+8p5s9Ief/5RTkLOLR8CCmzqc6M680mYdOWphps=;
+        b=pcMzNjLJdjX5/c2ppW6SOxOT2ZSXJKNSBAohmKxtZ00UZhNlNenx1Dw9/VUT1pQvLq
+         IjvPW/t339uv5lUl0NJKZ8uIhdAfqyK12ITZW9QUe65x47MrkY1CKkf0lTcfOQZbw5yu
+         iDAuyLsFrKK6HWzTdqsCexcCc4dENDYoUG+lzI+tfzTX4BALvybvtAiBFo4aK3xIdujq
+         zDLsOKJskWATc8z84fgv62peLprRLQWINKa6mFLUZH/ZAVSVKhZ6tzlsKgNmR011AJD6
+         B2HXdqde0UhxMApWBfyZsS9yEgcfDzjWeuMB4rbwQP6GTjCGbFkdicFDodTSHZEf9Vm3
+         jC4w==
+X-Gm-Message-State: AOAM530CR1IE/a0gLv6y44ZHDgYNIDiI2WwgMdFYF4VFXsF7vL15iJuz
+	yWDULpaanasEDS15UYIcbTOqQcZtzbqArorrSzfZKp2OixU=
+X-Google-Smtp-Source: ABdhPJz997WINvd9YKptsPY8a7hQCF1YxEup0f7PWxVH4cz/aKNKWEHebyq1bpz2UXfi52BESwuKOpayWbwcGDGbZzQ=
+X-Received: by 2002:ad4:4890:: with SMTP id bv16mr10801620qvb.164.1589900387511;
+ Tue, 19 May 2020 07:59:47 -0700 (PDT)
+MIME-Version: 1.0
+From: Nancy Fried Foster <nancy.fried.foster@gmail.com>
+Date: Tue, 19 May 2020 10:59:11 -0400
+Message-ID: <CADK=NejqDHLuOrL7_A2Z9qhHW+p8SmCMWpUjGajr394meQDosA@mail.gmail.com>
+Subject: Good recipe
+To: Gregory Foster <grahfoster@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000d3716f05a601873d"
+
+--000000000000d3716f05a601873d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+This is easy and delicious. I made it with frozen haddock, which is
+inexpensive. I used two pieces from a package that had about 6 or 8 pieces
+and kept the rest in the freezer for another time. lmk if you want me to
+send you some smoked paprika and bay leaves.
+
+*Fish Chowder*
+
+Dice and then saut=C3=A9 in Dutch oven in this order:
+
+3 or 4 strips of bacon
+
+1 small onion
+
+1 carrot
+
+2 large or 4 small potatoes
+
+ Season with:
+
+Salt and pepper
+
+=C2=BD t smoked paprika
+
+Deglaze pot with a little white wine or vermouth
+
+Add:
+
+1 can of corn, drained
+
+2 bay leaves
+
+Enough water to cover
+
+Simmer until the liquid has reduced by a third and the potatoes are tender
+
+Add and allow to thicken slightly:
+
+About 1 c light cream (or milk or half and half)
+
+Cut and stir into the soup:
+
+=C2=BD lb. fish fillets
+
+Simmer gently for five more minutes and serve
+
+--000000000000d3716f05a601873d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">This is easy and delicious. I made it wit=
+h frozen haddock, which is inexpensive. I used two pieces from a package th=
+at had about 6 or 8 pieces and kept the rest in the freezer for another tim=
+e. lmk if you want me to send you some smoked paprika and bay leaves.<div><=
+br></div><div><p class=3D"MsoNormal" align=3D"center" style=3D"margin:0in 0=
+in 0.0001pt;font-size:medium;font-family:Calibri,sans-serif;color:rgb(0,0,0=
+);text-align:center"><b><span style=3D"font-size:11pt;font-family:Georgia,s=
+erif">Fish Chowder</span></b></p><p style=3D"margin:0in 0in 0.0001pt;font-s=
+ize:medium;font-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)">=
+<span style=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34)=
+">Dice and then saut=C3=A9 in Dutch oven in this order:<span></span></span>=
+</p><p style=3D"margin:0in 0in 0.0001pt 0.5in;font-size:medium;font-family:=
+&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"><span style=3D"font-siz=
+e:11pt;font-family:Georgia,serif;color:rgb(34,34,34)">3 or 4 strips of baco=
+n<span></span></span></p><p style=3D"margin:0in 0in 0.0001pt 0.5in;font-siz=
+e:medium;font-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"><s=
+pan style=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34)">=
+1 small onion<span></span></span></p><p style=3D"margin:0in 0in 0.0001pt 0.=
+5in;font-size:medium;font-family:&quot;Times New Roman&quot;,serif;color:rg=
+b(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,serif;color:rgb=
+(34,34,34)">1 carrot<span></span></span></p><p style=3D"margin:0in 0in 0.00=
+01pt 0.5in;font-size:medium;font-family:&quot;Times New Roman&quot;,serif;c=
+olor:rgb(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,serif;co=
+lor:rgb(34,34,34)">2 large or 4 small potatoes<span></span></span></p><p st=
+yle=3D"margin:0in 0in 0.0001pt;font-size:medium;font-family:&quot;Times New=
+ Roman&quot;,serif;color:rgb(0,0,0)"><span style=3D"font-size:11pt;font-fam=
+ily:Georgia,serif;color:rgb(34,34,34)"><span>=C2=A0</span></span><span styl=
+e=3D"color:rgb(34,34,34);font-family:Georgia,serif;font-size:11pt">Season w=
+ith:</span></p><p style=3D"margin:0in 0in 0.0001pt 0.5in;font-size:medium;f=
+ont-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"><span style=
+=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34)">Salt and =
+pepper<span></span></span></p><p style=3D"margin:0in 0in 0.0001pt 0.5in;fon=
+t-size:medium;font-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0=
+)"><span style=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,=
+34)">=C2=BD t smoked paprika<span></span></span></p><p style=3D"margin:0in =
+0in 0.0001pt;font-size:medium;font-family:&quot;Times New Roman&quot;,serif=
+;color:rgb(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,serif;=
+color:rgb(34,34,34)"><span>Deglaze pot with a little white wine or vermouth=
+</span></span></p><p style=3D"margin:0in 0in 0.0001pt;font-size:medium;font=
+-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"><span style=3D"=
+font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34)">Add:<span></s=
+pan></span></p><p style=3D"margin:0in 0in 0.0001pt 0.5in;font-size:medium;f=
+ont-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"><span style=
+=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34)">1 can of =
+corn, drained<span></span></span></p><p style=3D"margin:0in 0in 0.0001pt 0.=
+5in;font-size:medium;font-family:&quot;Times New Roman&quot;,serif;color:rg=
+b(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,serif;color:rgb=
+(34,34,34)">2 bay leaves<span></span></span></p><p style=3D"margin:0in 0in =
+0.0001pt 0.5in;font-size:medium;font-family:&quot;Times New Roman&quot;,ser=
+if;color:rgb(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,seri=
+f;color:rgb(34,34,34)">Enough water to cover</span></p><p style=3D"margin:0=
+in 0in 0.0001pt;font-size:medium;font-family:&quot;Times New Roman&quot;,se=
+rif;color:rgb(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,ser=
+if;color:rgb(34,34,34)">Simmer until the liquid has reduced by a third and =
+the potatoes are tender</span></p><p style=3D"margin:0in 0in 0.0001pt;font-=
+size:medium;font-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"=
+><span style=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34=
+)">Add and allow to thicken slightly:<span></span></span></p><p style=3D"ma=
+rgin:0in 0in 0.0001pt 0.5in;font-size:medium;font-family:&quot;Times New Ro=
+man&quot;,serif;color:rgb(0,0,0)"><span style=3D"font-size:11pt;font-family=
+:Georgia,serif;color:rgb(34,34,34)">About 1 c light cream (or milk or half =
+and half)</span></p><p style=3D"margin:0in 0in 0.0001pt;font-size:medium;fo=
+nt-family:&quot;Times New Roman&quot;,serif;color:rgb(0,0,0)"><span style=
+=3D"font-size:11pt;font-family:Georgia,serif;color:rgb(34,34,34)">Cut and s=
+tir into the soup:<span></span></span></p><p style=3D"margin:0in 0in 0.0001=
+pt 0.5in;font-size:medium;font-family:&quot;Times New Roman&quot;,serif;col=
+or:rgb(0,0,0)"><span style=3D"font-size:11pt;font-family:Georgia,serif;colo=
+r:rgb(34,34,34)">=C2=BD lb. fish fillets<span></span></span></p><p style=3D=
+"margin:0in 0in 0.0001pt;font-size:medium;font-family:&quot;Times New Roman=
+&quot;,serif;color:rgb(0,0,0)"><span style=3D"color:rgb(34,34,34);font-fami=
+ly:Georgia,serif;font-size:11pt">Simmer gently for five more minutes and se=
+rve</span></p></div></div></div>
+
+||||
