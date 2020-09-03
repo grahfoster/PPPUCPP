@@ -1,0 +1,16 @@
+{ 1 5.5 { 1.1 2.2 3.3 5.5 8.8 13.13 21.21 } 1 }
+{ 2 1.1 { } 0 }
+{ 3 1.1 { 1.1 } 1 }
+{ 4 5.5 { 1.1 2.2 3.3 4.4 } 0 }
+{ 5 5.5 { 1.1 2.2 3.3 4.4 5.5 } 1 }
+{ 6 2.2 { 1.1 1.1 1.1 1.1 1.1 1.1 1.1 } 0 }
+{ 7 0 { 0 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 } 1 }
+{ 8 1.1 { 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.1 } 1 }
+{ 9 Einstein { Bohr Darwin Einstein Lavoisier Newton Turing } 1 }
+{ 10 the { } 0 }
+{ 11 the { the } 1 }
+{ 12 jumped { the brown fox quick } 0 }
+{ 13 the { dog lazy jumped over the } 1 }
+{ 14 no { yes yes yes yes yes yes yes } 0 }
+{ 15 no { no yes yes yes yes yes yes yes yes yes yes yes yes } 1 }
+{ 16 yes { no no no no no no no no no no no no no yes } 1 }
