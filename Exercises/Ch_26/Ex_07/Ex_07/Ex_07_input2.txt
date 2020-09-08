@@ -1,0 +1,5 @@
+{ f1 find { old ram } 1 }
+{ e1 erase { 0 } 9 }
+{ f2 find { old ram } 0 }
+{ e2 erase { 7 } 8 }
+{ e3 erase { 10 } 8 }
